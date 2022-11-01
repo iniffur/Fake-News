@@ -3,14 +3,23 @@
     "module": "commonjs",
     "esModuleInterop": true,
     "target": "es6",
+    "lib": ["es6", "DOM"],
+    "strict": true,
+    "types": ["jest"],
+    "noEmit": true,
     "noImplicitAny": true,
     "moduleResolution": "node",
     "sourceMap": true,
     "outDir": "dist",
-    "baseUrl": ".",
-    "paths": {
-      "*": ["node_modules/*"]
-    }
+    // TODO: test below
+    // "baseUrl": "http://localhost:3030/"
+    "baseUrl": "."
+    // commenting this out solves cypress errors
+    // "paths": {
+    //   "*": ["node_modules/*"]
+    // }
   },
-  "include": ["src/**/*"]
+  // "include": ["src/**/*"],
+  "include": ["src/*.ts"],
+  "exclude": ["src/*.test.ts"]
 }
