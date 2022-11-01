@@ -3,6 +3,8 @@
     "module": "commonjs",
     "esModuleInterop": true,
     "target": "es6",
+    "lib": ["es6", "dom"],
+    // "types": ["cypress", "node", "jest"], -> removed
     "noImplicitAny": true,
     "moduleResolution": "node",
     "sourceMap": true,
@@ -12,5 +14,10 @@
       "*": ["node_modules/*"]
     }
   },
-  "include": ["src/**/*"]
+    //"**/*.ts" added to include
+  "include": ["src/**/*", "**/*.ts"],
+  // exclude has been added
+  "exclude": [
+    "./cypress.config.ts"
+  ]
 }
