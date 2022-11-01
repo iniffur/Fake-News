@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import express, {Express, Request, Response} from "express";
 import path from "path";
 import homeRouter from "./routes/home";
+import bodyParser from "body-parser";
 // import createError from "http-errors";
 // import cookieParser from "cookie-parser";
 // import logger from "morgan";
@@ -26,8 +27,12 @@ app.use(
   "/css",
   express.static(path.join(__dirname, "node_modules/bootstrap/dist/css"))
 )
-
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
 app.use("/home", homeRouter);
+
 
 app.listen(port, () => {
   console.log(`server started at http://localhost:${port}`);
