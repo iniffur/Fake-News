@@ -12,7 +12,7 @@
   <body>
     <top-bar>This Reeks</top-bar>
     <h3>welcome to This Reeks!</h3>
-    <form action="/" method="POST">
+    <form action="/" method="POST" target="my_iframe">
       <div class="textInput">
         <label for="headlineInput">Type Your Headline</label>
         <input type="text" name="headline" placeholder="Headline here" />
@@ -26,7 +26,7 @@
         </button>
       </div>
     </form>
-    <iframe src="./result.ejs" width="400" height="400"></iframe>
+    <iframe name="my_iframe" src="" width="400" height="400"></iframe>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </body>
 </html>

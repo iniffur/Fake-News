@@ -30,6 +30,7 @@ app.use(
 );
 app.use(bodyParser.json());
 app.use("/", homeRouter);
+// app.use("/result", homeRouter);
 
 app.listen(port, () => {
   console.log(`server started at http://localhost:${port}`);

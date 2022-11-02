@@ -4,6 +4,6 @@ import HomeController from "../controllers/home";
 
 router.get("/", HomeController.Index);
 router.post("/", HomeController.Check);
-router.get("/result", HomeController.Check);
+// router.get("/result", HomeController.Result);
 
 export default router;

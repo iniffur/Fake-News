@@ -10,12 +10,16 @@ const HomeController = {
     const outputString = new Checker(text).check();
 
     console.log("displaying");
-    res.render("home/index", {
+    res.render("home/result", {
       result: outputString,
       headline: text,
       title: "This Reeks",
     });
   },
+
+  // Result: (req: Request, res: Response) => {
+  //   res.render("home/result", { title: "This Reeks" });
+  // },
 };
 
 export default HomeController;
