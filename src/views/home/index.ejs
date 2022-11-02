@@ -12,34 +12,21 @@
   <body>
     <top-bar>This Reeks</top-bar>
     <h3>welcome to This Reeks!</h3>
-    <!-- <form action="/" method="POST"> -->
-    <div class="textInput">
-      <label for="headlineInput">Type Your Headline</label>
-      <input type="text" name="headline" placeholder="Headline here" />
-      <button
-        type="submit"
-        name="submitButton"
-        id="submitButton"
-        class="btn btn-primary"
-      >
-        Submit
-      </button>
-    </div>
-
-    <div
-      data-toggle="collapse"
-      name="resultDiv"
-      class="card text-white bg-primary col d-flex"
-      style="max-width: 30rem"
-    >
-      <div class="card-header">"<%=headline%>"</div>
-      <div class="card-body">
-        <h5 class="card-title">BullShit Stats</h5>
-        <p class="card-text"><%= result %></p>
+    <form action="/" method="POST">
+      <div class="textInput">
+        <label for="headlineInput">Type Your Headline</label>
+        <input type="text" name="headline" placeholder="Headline here" />
+        <button
+          type="submit"
+          name="submitButton"
+          id="submitButton"
+          class="btn btn-primary"
+        >
+          Submit
+        </button>
       </div>
-    </div>
-
-    <!-- </form> -->
+    </form>
+    <iframe src="./result.ejs" width="400" height="400"></iframe>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </body>
 </html>
