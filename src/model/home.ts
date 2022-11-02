@@ -35,10 +35,10 @@ class Checker {
         ? (count += 1)
         : console.log(`${item} not found`);
     });
-    const wordCount = (count / this.text.split(" ").length) * 100;
-    const counterString = ` This headline ticked ${count} of our bullshit boxes`;
-    const percentageString = `${wordCount}% bullshit. `;
-    return [wordCount, counterString, percentageString];
+    const percentageBullShit = (count / this.text.split(" ").length) * 100;
+    const counterString = `This headline ticked ${count} of our bullshit boxes`;
+    const percentageString = `${percentageBullShit}% bullshit.`;
+    return [percentageBullShit, counterString, percentageString];
   };
 }
 
