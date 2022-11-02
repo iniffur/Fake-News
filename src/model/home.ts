@@ -49,8 +49,8 @@ class Checker {
     const percentageString = `${percentageBullShit}% bullshit.`;
     const outputString =
       percentageBullShit <= 20
-        ? `${percentageString}Somewhat believable.${counterString}`
-        : `${percentageString}Trash.${counterString}`;
+        ? `${percentageString}\nSomewhat believable.\n${counterString}`
+        : `${percentageString}\nTrash.\n${counterString}`;
     return outputString;
   };
 }
