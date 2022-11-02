@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html>
+  <link
+    href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAACBoYANTV1gCDkKMAX3CHAGfw4gDd6+kAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARERERERERERERDNDQ0RURARDRERERDRABDRFQzNEQ0AAREM0RDNEAAJENEREVDQAIABEREREAAACAEQzM0QCACAAA1REMAAgAAAgNEQAAAIAAgRDQAAAAgAgAEMAAAAgAAIgAABgAgAAAAIAARAgAAAAIAAAYAIAAAIAAAAAACAAAAAAAAAAAIABAACAAQAAwAMAAIADAABwDwAAsAsAAHgdAAD0PgAA6H4AANz9AADn2wAA+5cAAPfbAADv/QAA"
+    rel="icon"
+    type="image/x-icon"
+  />
   <head>
     <meta charset="UTF-8" />
     <title>This Reeks</title>
@@ -18,7 +23,7 @@
       </h1>
       <div class="row p-4">
         <div class="col-7 p-4">
-          <form action="/" method="POST">
+          <form action="/" method="POST" target="my_iframe">
             <div class="form-group">
               <div class="textInput">
                 <label class="mt-3 mb-3" for="headlineInput"
@@ -42,19 +47,7 @@ Headline...</textarea
           </form>
         </div>
         <div class="col-5 p-4">
-          <div class="card">
-            <div class="card-header text-white bg-primary bg-gradient fw-bold">
-              "Do Dogs have feelings?"
-            </div>
-            <div class="card-body bg-secondary bg-opacity-25">
-              <p class="card-title fw-bold">BullShit Stats</p>
-              <p class="card-text">50% bullshit.</p>
-              <p class="card-text">Trash.</p>
-              <p class="card-text">
-                This headline ticked 2 of our bullshit boxes
-              </p>
-            </div>
-          </div>
+          <iframe name="my_iframe" src="" width="400" height="400"></iframe>
         </div>
       </div>
     </div>
