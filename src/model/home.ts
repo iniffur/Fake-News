@@ -29,6 +29,15 @@ class Checker {
     ];
   }
   check = () => {
+    if (this.text == "") {
+      return "invalid input";
+    } else if (this.text.split(" ").length === 1) {
+      return "invalid input";
+    } else if (parseInt(this.text).toString() === this.text) {
+      return "invalid input";
+    } else if (typeof this.text !== "string") {
+      return "invalid input";
+    }
     let count = 0;
     this.list.forEach((item) => {
       this.text.toLowerCase().includes(item)

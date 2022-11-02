@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import express, { Express, Request, Response } from "express";
+import express, { Express } from "express";
 import path from "path";
 import homeRouter from "./routes/home";
 import bodyParser from "body-parser";
@@ -15,6 +15,7 @@ const port = process.env.SERVER_PORT;
 
 const app: Express = express();
 
+app.use(express.static(__dirname + "/public"));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
