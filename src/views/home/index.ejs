@@ -18,7 +18,7 @@
       </h1>
       <div class="row">
         <div class="col-7 p-4">
-          <form action="/" method="POST">
+          <form action="/" method="POST" target="my_iframe">
             <div class="form-group">
               <div class="textInput">
                 <label class="mt-3 mb-3" for="headlineInput"
@@ -41,7 +41,9 @@ Headline...</textarea
             </div>
           </form>
         </div>
-        <div class="col-5 p-4"></div>
+        <div class="col-5 p-4">
+          <iframe name="my_iframe" src="" width="400" height="400"></iframe>
+        </div>
       </div>
     </div>
     <!-- JavaScript Bundle with Popper -->
