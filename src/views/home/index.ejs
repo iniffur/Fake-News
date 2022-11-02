@@ -12,19 +12,36 @@
     />
   </head>
   <body>
-    <div class="container-xl border">
-      <h1 class="text-center m-4">Welcome to This Reeks!</h1>
+    <div class="container-xl border rounded mt-5">
+      <h1 class="text-center mt-5 mb-4 ml-4 mr-4 text-secondary">
+        Welcome to This Reeks!
+      </h1>
       <div class="row">
-        <div class="col-7 border">
+        <div class="col-7 p-4">
           <form action="/" method="POST">
-            <div class="textInput">
-              <label for="headlineInput">Type Your Headline</label>
-              <input type="text" name="headline" placeholder="Headline here" />
-              <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="form-group">
+              <div class="textInput">
+                <label class="mt-3 mb-3" for="headlineInput"
+                  >Type or paste the headline you would like to check!</label
+                >
+                <textarea
+                  class="form-control"
+                  id="headlineInput"
+                  name="headline"
+                  aria-label="With textarea"
+                  rows="3"
+                >
+Headline...............</textarea
+                >
+                <!-- <input type="text" name="headline" placeholder="Headline here" /> -->
+                <button class="btn btn-primary mt-3" type="submit">
+                  Does it reek?
+                </button>
+              </div>
             </div>
           </form>
         </div>
-        <div class="col-5 border"></div>
+        <div class="col-5 p-4"></div>
       </div>
     </div>
     <!-- JavaScript Bundle with Popper -->
