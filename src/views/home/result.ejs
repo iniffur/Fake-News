@@ -1,11 +1,17 @@
-<div
-  name="resultDiv"
-  class="card text-white bg-primary col d-flex"
-  style="max-width: 30rem"
->
-  <div class="card-header">"<%=headline%>"</div>
-  <div class="card-body">
-    <h5 class="card-title">BullShit Stats</h5>
-    <p class="card-text"><%= result %></p>
+<head>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <div name="resultDiv" class="card">
+    <div class="card-header text-white bg-primary bg-gradient fw-bold">
+      "<%=headline%>"
+    </div>
+    <div class="card-body bg-secondary bg-opacity-25">
+      <p class="card-title fw-bold">BullShit Stats</p>
+      <p class="card-text"><%= result %></p>
+    </div>
   </div>
-</div>
+</body>
