@@ -55,14 +55,21 @@ class Checker {
     this.list.forEach((item) => {
       this.text.toLowerCase().includes(item)
         ? (count += 1)
-        : console.log(`${item} not found`);
+        : // : console.log(`${item} not found`);
+          (count = count + 0);
     });
     this.text.split(" ").forEach((item) => {
-      isNaN(+item) === false ? (count += 1) : console.log(`number not found`);
-    })
-    this.text.toUpperCase() === this.text ? (count += 1) : console.log('Not all caps');
+      // console.log(`number not found`);
+      isNaN(+item) === false ? (count += 1) : (count = count + 0);
+    });
+    this.text.toUpperCase() === this.text
+      ? (count += 1)
+      : // : console.log("Not all caps");
+        (count = count + 0);
     let percentageBullShit = (count / this.text.split(" ").length) * 100;
-    if (percentageBullShit > 100) {percentageBullShit = 100}
+    if (percentageBullShit > 100) {
+      percentageBullShit = 100;
+    }
     const counterString = `This headline ticked ${count} of our bullshit boxes`;
     const percentageString = `${percentageBullShit}% bullshit.`;
     const outputString =

@@ -1,9 +1,14 @@
 import { Request, Response } from "express";
 import Checker from "../model/home";
+import fetchPokemon from "../model/fetchPokemon";
 
 const HomeController = {
-  Index: (req: Request, res: Response) => {
-    res.render("home/index", { title: "This Reeks" });
+  Index: async (req: Request, res: Response) => {
+    const pokemonData = await fetchPokemon("Bulbasaur");
+    res.render("home/index", {
+      title: "This Reeks",
+      pokemonJson: JSON.stringify(pokemonData),
+    });
   },
   Check: (req: Request, res: Response) => {
     const text = req.body.headline;

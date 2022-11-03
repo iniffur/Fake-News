@@ -3,22 +3,22 @@
 //     date.getSeconds()
 //   ).padStart(2, "0")}.${String(date.getMilliseconds()).padStart(3, "0")}`;
 
-// type PokemonData = {
-//   id: string;
-//   number: string;
-//   name: string;
-//   image: string;
-//   fetchedAt: string;
-//   attacks: {
-//     special: Array<{
-//       name: string;
-//       type: string;
-//       damage: number;
-//     }>;
-//   };
-// };
+type PokemonData = {
+  id: string;
+  number: string;
+  name: string;
+  image: string;
+  fetchedAt: string;
+  attacks: {
+    special: Array<{
+      name: string;
+      type: string;
+      damage: number;
+    }>;
+  };
+};
 
-async function fetchPokemon(name: string): Promise<any> {
+async function fetchPokemon(name: string): Promise<PokemonData> {
   const pokemonQuery = `
     query PokemonInfo($name: String) {
       pokemon(name: $name) {
@@ -51,10 +51,11 @@ async function fetchPokemon(name: string): Promise<any> {
 
   type JSONResponse = {
     data?: {
-      pokemon: Omit<any, "fetchedAt">;
+      pokemon: Omit<PokemonData, "fetchedAt">;
     };
     errors?: Array<{ message: string }>;
   };
+
   const { data, errors }: JSONResponse = await response.json();
   if (response.ok) {
     const pokemon = data?.pokemon;
