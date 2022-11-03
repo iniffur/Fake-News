@@ -7,6 +7,19 @@ class Checker {
       "do",
       "are",
       "?",
+      "best",
+      "worst",
+      "celebrities",
+      "celebrity",
+      "style",
+      "women",
+      "men",
+      "hate",
+      "our readers",
+      "doctors",
+      "trick",
+      "!",
+      "guide",
       "the best",
       "the worst",
       "ultimate guide",
@@ -44,7 +57,12 @@ class Checker {
         ? (count += 1)
         : console.log(`${item} not found`);
     });
-    const percentageBullShit = (count / this.text.split(" ").length) * 100;
+    this.text.split(" ").forEach((item) => {
+      isNaN(+item) === false ? (count += 1) : console.log(`number not found`);
+    })
+    this.text.toUpperCase() === this.text ? (count += 1) : console.log('Not all caps');
+    let percentageBullShit = (count / this.text.split(" ").length) * 100;
+    if (percentageBullShit > 100) {percentageBullShit = 100}
     const counterString = `This headline ticked ${count} of our bullshit boxes`;
     const percentageString = `${percentageBullShit}% bullshit.`;
     const outputString =
