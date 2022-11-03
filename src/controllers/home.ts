@@ -1,9 +1,11 @@
 import { Request, Response } from "express";
 import Checker from "../model/home";
+import NewsHeadline from "../model/newsHeadline";
 
 const HomeController = {
   Index: (req: Request, res: Response) => {
-    res.render("home/index", { title: "This Reeks" });
+    const apiTest = new NewsHeadline().getHeadlineData;
+    res.render("home/index", { title: "This Reeks", apiContent: apiTest });
   },
   Check: (req: Request, res: Response) => {
     const text = req.body.headline;
