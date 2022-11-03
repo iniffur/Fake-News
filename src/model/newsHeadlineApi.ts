@@ -12,12 +12,10 @@ class NewsHeadlineAPi {
 
   // TODO: change datatype for callback
   fetchHeadlineData(callback: any) {
-    got(this.url + apiKey)
-      .then((response) => {
-        const result = JSON.parse(response.body);
-        return result;
-      })
-      .then(callback);
+    got(this.url + apiKey).then((response) => {
+      const result = JSON.parse(response.body);
+      callback(result);
+    });
   }
 }
 export default NewsHeadlineAPi;

@@ -1,9 +1,8 @@
-import NewsHeadlineAPi from "./newsHeadlineApi";
-
 class NewsHeadline {
   //TODO: chang API & result class type TS
   API: any;
   result: any;
+
   constructor(API: any) {
     this.API = API;
     this.result;

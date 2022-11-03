@@ -1,10 +1,12 @@
 import { Request, Response } from "express";
+import NewsHeadlineAPi from "../model/newsHeadlineApi";
 import Checker from "../model/home";
 import NewsHeadline from "../model/newsHeadline";
 
 const HomeController = {
   Index: (req: Request, res: Response) => {
-    const apiTest = new NewsHeadline().getHeadlineData;
+    const newsHeadlineApi = new NewsHeadlineAPi();
+    const apiTest = new NewsHeadline(newsHeadlineApi).getHeadlineData();
     res.render("home/index", { title: "This Reeks", apiContent: apiTest });
   },
   Check: (req: Request, res: Response) => {
