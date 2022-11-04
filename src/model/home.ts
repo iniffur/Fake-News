@@ -53,16 +53,19 @@ class Checker {
     }
     let count = 0;
     this.list.forEach((item) => {
-      this.text.toLowerCase().includes(item)
-        ? (count += 1)
-        : console.log(`${item} not found`);
+      if (this.text.toLowerCase().includes(item)) {
+        count += 1;
+      }
     });
     this.text.split(" ").forEach((item) => {
-      isNaN(+item) === false ? (count += 1) : console.log(`number not found`);
+      if (isNaN(+item) === false) {
+        count += 1;
+      }
     });
-    this.text.toUpperCase() === this.text
-      ? (count += 1)
-      : console.log("Not all caps");
+    if (this.text.toUpperCase() === this.text) {
+      count += 1;
+    }
+
     let percentageBullShit = (count / this.text.split(" ").length) * 100;
     if (percentageBullShit > 100) {
       percentageBullShit = 100;
@@ -75,9 +78,6 @@ class Checker {
         : `${percentageString}\nTrash.\n${counterString}`;
     return outputString;
   };
-
-  // https://factchecktools.googleapis.com/v1alpha1/claims:search
-  //https://factchecktools.googleapis.com/v1alpha1/claims:search?key=AIzaSyBwIZ8rP8aE8eD9O4s9HYlozrUEtCc_Olo&query=trump did 9/11
 }
 
 export default Checker;

@@ -50,6 +50,21 @@ Headline...</textarea
           <iframe name="my_iframe" src="" width="400" height="400"></iframe>
         </div>
       </div>
+      <div class="row p-4">
+        <div class="col-2"></div>
+        <div class="col-8">
+          <div class="list-group">
+            <% newsHeadlines.forEach((headline) => { %>
+            <a
+              href="<%=headline.url%>"
+              class="list-group-item list-group-item-action"
+              >Headline: <%= headline.title %></a
+            >
+            <% }); %>
+          </div>
+        </div>
+        <div class="col-2"></div>
+      </div>
     </div>
     <%=googleContent%>
     <!-- JavaScript Bundle with Popper -->

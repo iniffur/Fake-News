@@ -1,18 +1,17 @@
 import { Request, Response } from "express";
 import Checker from "../model/home";
-import fetchGoogleData from "../model/fetchGoogleData";
+import NewsFormatter from "../model/newsFormatter";
+// import fetchGoogleData from "../model/fetchGoogleData";
 
 import dotenv from "dotenv";
 dotenv.config();
 
-const googleDataApiKey = process.env.GOOGLE_DATA_API_KEY;
+// const googleDataApiKey = process.env.GOOGLE_DATA_API_KEY;
 
 const HomeController = {
   Index: async (req: Request, res: Response) => {
-    // const query = "Trump won election";
-    // const googleData = await fetchGoogleData(
-    //   `https://factchecktools.googleapis.com/v1alpha1/claims:search?key=${googleDataApiKey}&query=${query}`
-    // );
+    const newsHeadlines = new NewsFormatter().outputNews();
+    const topTen = newsHeadlines.slice(0, 10);
 
     const googleData: any = [];
     trumpHeadlines.claims.forEach((item) => {
@@ -21,6 +20,7 @@ const HomeController = {
     res.render("home/index", {
       title: "This Reeks",
       googleContent: googleData,
+      newsHeadlines: topTen,
     });
   },
   Check: (req: Request, res: Response) => {
