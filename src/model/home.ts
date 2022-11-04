@@ -69,11 +69,14 @@ class Checker {
     let percentageBullShit = (count / this.text.split(" ").length) * 100;
     if (percentageBullShit > 100) {
       percentageBullShit = 100;
+      return [percentageBullShit, count];
     }
-    const counterString = `This headline ticked ${count} of our bullshit boxes`;
-    const percentageString = `${percentageBullShit}% bullshit.`;
+  };
+  format = (array: any) => {
+    const counterString = `This headline ticked ${array[1]} of our bullshit boxes`;
+    const percentageString = `${array[0]}% bullshit.`;
     const outputString =
-      percentageBullShit <= 20
+      array[0] <= 20
         ? `${percentageString}\nSomewhat believable.\n${counterString}`
         : `${percentageString}\nTrash.\n${counterString}`;
     return outputString;
