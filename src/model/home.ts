@@ -53,37 +53,31 @@ class Checker {
     }
     let count = 0;
     this.list.forEach((item) => {
-      this.text.toLowerCase().includes(item)
-        ? (count += 1)
-        : // : console.log(`${item} not found`);
-          (count = count + 0);
+      if (this.text.toLowerCase().includes(item)) {
+        count += 1;
+      }
     });
     this.text.split(" ").forEach((item) => {
-      // console.log(`number not found`);
-      isNaN(+item) === false ? (count += 1) : (count = count + 0);
+      if (isNaN(+item) === false) {
+        count += 1;
+      }
     });
-    this.text.toUpperCase() === this.text
-      ? (count += 1)
-      : // : console.log("Not all caps");
-        (count = count + 0);
+    if (this.text.toUpperCase() === this.text) {
+      count += 1;
+    }
+
     let percentageBullShit = (count / this.text.split(" ").length) * 100;
     if (percentageBullShit > 100) {
       percentageBullShit = 100;
-      return [percentageBullShit, count];
     }
-  };
-  format = (array: any) => {
-    const counterString = `This headline ticked ${array[1]} of our bullshit boxes`;
-    const percentageString = `${array[0]}% bullshit.`;
+    const counterString = `This headline ticked ${count} of our bullshit boxes`;
+    const percentageString = `${percentageBullShit}% bullshit.`;
     const outputString =
-      array[0] <= 20
+      percentageBullShit <= 20
         ? `${percentageString}\nSomewhat believable.\n${counterString}`
         : `${percentageString}\nTrash.\n${counterString}`;
     return outputString;
   };
-
-  // https://factchecktools.googleapis.com/v1alpha1/claims:search
-  //https://factchecktools.googleapis.com/v1alpha1/claims:search?key=AIzaSyBwIZ8rP8aE8eD9O4s9HYlozrUEtCc_Olo&query=trump did 9/11
 }
 
 export default Checker;

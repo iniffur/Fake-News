@@ -25,8 +25,7 @@ const HomeController = {
   },
   Check: (req: Request, res: Response) => {
     const text = req.body.headline;
-    const outputArray = new Checker(text).check();
-    const outputString = new Checker(text).format(outputArray);
+    const outputString = new Checker(text).check();
 
     console.log("displaying");
     res.render("home/result", {

@@ -2,6 +2,7 @@
 
 class NewsFormatter {
   newsHeadlineApiKey = process.env.NEWS_HEADLINES_API_KEY;
+  // TODO: use api instead of ukNewsHeadlinesApiOutput
   // const newsHeadlineData = await fetchNewsHeadline(
   //   `https://newsapi.org/v2/top-headlines?country=gb&apiKey=${newsHeadlineApiKey}`
   // );
