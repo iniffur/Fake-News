@@ -81,6 +81,9 @@ class Checker {
         : `${percentageString}\nTrash.\n${counterString}`;
     return outputString;
   };
+
+  // https://factchecktools.googleapis.com/v1alpha1/claims:search
+  //https://factchecktools.googleapis.com/v1alpha1/claims:search?key=AIzaSyBwIZ8rP8aE8eD9O4s9HYlozrUEtCc_Olo&query=trump did 9/11
 }
 
 export default Checker;
