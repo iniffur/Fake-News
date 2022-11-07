@@ -26,14 +26,17 @@ const HomeController = {
       inputText
     );
 
+    const sentimentApiStatement =
+      await new SentimentFormatter().outputSentimentStatement(inputText);
     const sentimentApiResults =
-      await new SentimentFormatter().outputSentimentData(inputText);
+      await new SentimentFormatter().outputSentimentValue(inputText);
 
     res.render("home/result", {
       result: outputString,
       googleContent: googleApiStatement,
       googleResults: googleApiResults,
-      sentimentresults: sentimentApiResults,
+      sentimentResults: sentimentApiResults,
+      sentimentStatement: sentimentApiStatement,
       headline: inputText,
       error: outputString,
       title: "This Reeks",
