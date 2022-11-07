@@ -13,23 +13,22 @@ dotenv.config();
 const HomeController = {
   Index: async (req: Request, res: Response) => {
     const newsHeadlines = new NewsFormatter().outputNews();
-    const topTen = newsHeadlines.slice(0, 10);
+
+    
 
     res.render("home/index", {
       title: "This Reeks",
-      newsHeadlines: topTen,
+      newsHeadlines: newsHeadlines,
     });
   },
   Check: async (req: Request, res: Response) => {
     const inputText = req.body.headline;
     const outputString = await new Checker(inputText).check();
-
     const googleApiStatement =
       await new GoogleFormatter().outputGoogleStatements(inputText);
     const googleApiResults = await new GoogleFormatter().outputGoogleResults(
       inputText
     );
-
     res.render("home/result", {
       result: outputString,
       googleContent: googleApiStatement,
