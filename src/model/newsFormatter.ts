@@ -1,4 +1,5 @@
 // import fetchNewsHeadline from "./fetchNewsHeadline";
+import Checker from "./home";
 
 class NewsFormatter {
   newsHeadlineApiKey = process.env.NEWS_HEADLINES_API_KEY;
@@ -13,9 +14,18 @@ class NewsFormatter {
     newsHeadlineData.articles.map((article) => {
       newsHeadlines.push({ title: article.title, url: article.url });
     });
+    newsHeadlines.map((hash: any) => {
+     hash.percentage = Math.round(this.headlineCheck(hash.title))
+    })
+    
 
     return newsHeadlines;
   };
+  headlineCheck = (headline: any) => {
+      const checker = new Checker(headline);
+      checker.checkInput()
+      return checker.percentageCalculator()
+  }
 }
 export default NewsFormatter;
 
