@@ -2,20 +2,23 @@ import { Request, Response } from "express";
 import Checker from "../model/home";
 import NewsFormatter from "../model/newsFormatter";
 import GoogleFormatter from "../model/googleFormatter";
+//express flash
 
 // import fetchGoogleData from "../model/fetchGoogleData";
 
 import dotenv from "dotenv";
+
 dotenv.config();
 
 const HomeController = {
   Index: async (req: Request, res: Response) => {
     const newsHeadlines = new NewsFormatter().outputNews();
-    const topTen = newsHeadlines.slice(0, 10);
+
+    
 
     res.render("home/index", {
       title: "This Reeks",
-      newsHeadlines: topTen,
+      newsHeadlines: newsHeadlines,
     });
   },
   Check: async (req: Request, res: Response) => {
@@ -26,12 +29,12 @@ const HomeController = {
     const googleApiResults = await new GoogleFormatter().outputGoogleResults(
       inputText
     );
-
     res.render("home/result", {
       result: outputString,
       googleContent: googleApiStatement,
       googleResults: googleApiResults,
       headline: inputText,
+      error: outputString,
       title: "This Reeks",
     });
   },

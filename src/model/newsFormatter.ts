@@ -10,16 +10,20 @@ class NewsFormatter {
 
   outputNews = () => {
     const newsHeadlineData = ukNewsHeadlinesApiOutput;
-    const newsHeadlines: any = [];
+    let newsHeadlines: any = [];
     newsHeadlineData.articles.map((article) => {
       newsHeadlines.push({ title: article.title, url: article.url });
     });
     newsHeadlines.map((hash: any) => {
      hash.percentage = Math.round(this.headlineCheck(hash.title))
     })
+    newsHeadlines = newsHeadlines.sort((a: any, b: any) =>
+      (b.percentage < a.percentage )? 1 : (a.percentage < b.percentage) ? -1 : 0
+    ).reverse();
+    const topTen = newsHeadlines.slice(0, 10);
     
 
-    return newsHeadlines;
+    return topTen;
   };
   headlineCheck = (headline: any) => {
       const checker = new Checker(headline);

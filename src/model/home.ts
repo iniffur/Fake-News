@@ -81,8 +81,8 @@ class Checker {
     }
   };
   formatString = () => {
+    const percentageString = `${Math.round(this.percentage)}% bullshit.`;
     const counterString = `This headline ticked ${this.count} of our bullshit boxes`;
-    const percentageString = `${this.percentage}% bullshit.`;
     const outputString =
       this.percentage <= 20
         ? `${percentageString}\nSomewhat believable.\n${counterString}`
