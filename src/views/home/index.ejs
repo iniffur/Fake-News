@@ -60,8 +60,18 @@ Headline...
             <a
               href="<%=headline.url%>"
               class="list-group-item list-group-item-action"
-              ><%= headline.title %> - <%= headline.percentage%> % bullshit</a
+              ><%= headline.title %> - <%= headline.percentage%>% bullshit</a
             >
+            <div class="progress">
+              <div
+                class="progress-bar"
+                role="progressbar"
+                aria-valuenow="<%= headline.percentage%>"
+                style="width: <%= headline.percentage%>%"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
             <% }); %>
           </div>
         </div>
