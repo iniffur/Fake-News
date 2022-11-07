@@ -1,36 +1,35 @@
 import { Request, Response } from "express";
 import Checker from "../model/home";
 import NewsFormatter from "../model/newsFormatter";
+import GoogleFormatter from "../model/googleFormatter";
+
 // import fetchGoogleData from "../model/fetchGoogleData";
 
 import dotenv from "dotenv";
 dotenv.config();
-
-// const googleDataApiKey = process.env.GOOGLE_DATA_API_KEY;
 
 const HomeController = {
   Index: async (req: Request, res: Response) => {
     const newsHeadlines = new NewsFormatter().outputNews();
     const topTen = newsHeadlines.slice(0, 10);
 
-    const googleData: any = [];
-    trumpHeadlines.claims.forEach((item) => {
-      googleData.push(item.claimReview[0].textualRating);
-    });
     res.render("home/index", {
       title: "This Reeks",
-      googleContent: googleData,
       newsHeadlines: topTen,
     });
   },
-  Check: (req: Request, res: Response) => {
-    const text = req.body.headline;
-    const outputString = new Checker(text).check();
+  Check: async (req: Request, res: Response) => {
+    const inputText = req.body.headline;
+    const outputString = await new Checker(inputText).check();
+    const googleApiData = await new GoogleFormatter().outputGoogleResults(
+      inputText
+    );
 
     console.log("displaying");
     res.render("home/result", {
       result: outputString,
-      headline: text,
+      googleContent: googleApiData,
+      headline: inputText,
       title: "This Reeks",
     });
   },
