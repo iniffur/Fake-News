@@ -5,13 +5,41 @@
   />
 </head>
 <body>
-  <div name="resultDiv" class="card">
-    <div class="card-header text-white bg-primary bg-gradient fw-bold">
-      "<%=headline%>"
+  <div class="container-xl border">
+    <div class="col-8 p-4">
+      <div name="resultDiv" class="card">
+        <div class="card-header text-white bg-primary bg-gradient fw-bold">
+          "<%=headline%>"
+        </div>
+        <div class="card-body bg-secondary bg-opacity-25">
+          <p class="card-title fw-bold">BullShit Stats</p>
+          <p class="card-text"><%= result %></p>
+        </div>
+      </div>
     </div>
-    <div class="card-body bg-secondary bg-opacity-25">
-      <p class="card-title fw-bold">BullShit Stats</p>
-      <p class="card-text"><%= result %></p>
+
+    <div class="col-8 p-4">
+      <div name="resultDiv" class="card">
+        <div class="card-header text-white bg-primary bg-gradient fw-bold">
+          "<%=headline%>"
+        </div>
+        <div class="card-body bg-secondary bg-opacity-25">
+          <p class="card-title fw-bold">Results from Google API</p>
+          <p class="card-text"><%= googleContent %></p>
+          <p class="card-text">Click to see more</p>
+          <p class="card-text">
+          <% googleResults.forEach((ApiResult) => { %>
+            <a
+              href="<%=ApiResult.url%>"
+              class="list-group-item list-group-item-action"
+              target="_blank"
+              >Headline: <%= ApiResult.title %></a
+            >
+          <p>Rating: <%= ApiResult.textualRating %></p>
+            <% }); %>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </body>

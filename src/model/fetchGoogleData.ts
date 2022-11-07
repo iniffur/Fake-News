@@ -1,17 +1,19 @@
 type googleFactCheckerData = {
-  text: string;
-  claimant: number;
-  claimDate: string;
-  claimReview: Array<{
-    publisher: {
-      name: string;
-      site: string;
-    };
-    url: string;
-    title: string;
-    reviewDate: string;
-    textualRating: string;
-    languageCode: string;
+  claims: Array<{
+    text: string;
+    claimant: number;
+    claimDate: string;
+    claimReview: Array<{
+      publisher: {
+        name: string;
+        site: string;
+      };
+      url: string;
+      title: string;
+      reviewDate: string;
+      textualRating: string;
+      languageCode: string;
+    }>;
   }>;
 };
 
