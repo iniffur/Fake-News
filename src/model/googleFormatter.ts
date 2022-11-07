@@ -24,12 +24,7 @@ class GoogleFormatter {
 
   outputGoogleStatements = async (query: string) => {
     const googleData = trumpHeadlines;
-
-    // TODO: use api instead of ukNewsHeadlinesApiOutput
     const googleDataApiKey = process.env.GOOGLE_DATA_API_KEY;
-    // const googleData = await fetchGoogleData(
-    //   `https://factchecktools.googleapis.com/v1alpha1/claims:search?key=${googleDataApiKey}&query=${query}`
-    // );
 
     const textualRatings: any = [];
 

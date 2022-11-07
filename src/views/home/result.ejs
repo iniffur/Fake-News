@@ -26,6 +26,7 @@
         <div class="card-body bg-secondary bg-opacity-25">
           <p class="card-title fw-bold">Results from Google API</p>
           <p class="card-text"><%= googleContent %></p>
+          <p class="card-text">Click to see more</p>
           <p class="card-text">
           <% googleResults.forEach((ApiResult) => { %>
             <a
@@ -34,7 +35,7 @@
               target="_blank"
               >Headline: <%= ApiResult.title %></a
             >
-          <p>result: <%= ApiResult.textualRating %></p>
+          <p>Rating: <%= ApiResult.textualRating %></p>
             <% }); %>
           </p>
         </div>
