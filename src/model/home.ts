@@ -1,8 +1,12 @@
 class Checker {
+  count: number;
+  percentage: number;
   text: string;
   list: Array<string>;
   constructor(text: string) {
     this.text = text;
+    this.count = 0
+    this.percentage = 0
     this.list = [
       "do",
       "are",
@@ -42,42 +46,55 @@ class Checker {
     ];
   }
   check = () => {
-    if (this.text == "") {
+    if (this.checkInput() === "invalid input") {return "invalid input"}
+    this.checkInput()
+    this.percentageCalculator()
+    return this.formatString()
+  }
+  checkInput = () => {
+    this.count = 0;
+    if(this.text.trim().length <= 0){
+      return "invalid input"
+    }
+    if (this.text === "") {
       return "invalid input";
-    } else if (this.text.split(" ").length === 1) {
+    } else if (this.text.split(" ").length <= 1) {
       return "invalid input";
     } else if (parseInt(this.text).toString() === this.text) {
       return "invalid input";
     } else if (typeof this.text !== "string") {
       return "invalid input";
     }
-    let count = 0;
+    
     this.list.forEach((item) => {
       if (this.text.toLowerCase().includes(item)) {
-        count += 1;
+        this.count += 1;
       }
     });
     this.text.split(" ").forEach((item) => {
       if (isNaN(+item) === false) {
-        count += 1;
+        this.count += 1;
       }
     });
     if (this.text.toUpperCase() === this.text) {
-      count += 1;
+      this.count += 1;
     }
-
-    let percentageBullShit = (count / this.text.split(" ").length) * 100;
-    if (percentageBullShit > 100) {
-      percentageBullShit = 100;
-    }
-    const counterString = `This headline ticked ${count} of our bullshit boxes`;
-    const percentageString = `${percentageBullShit}% bullshit.`;
+  };
+  formatString = () => {
+    const counterString = `This headline ticked ${this.count} of our bullshit boxes`;
+    const percentageString = `${this.percentage}% bullshit.`;
     const outputString =
-      percentageBullShit <= 20
+      this.percentage <= 20
         ? `${percentageString}\nSomewhat believable.\n${counterString}`
         : `${percentageString}\nTrash.\n${counterString}`;
     return outputString;
-  };
-}
+  }
+  percentageCalculator = () => {
+    this.percentage = (this.count / this.text.split(" ").length) * 100;
+    if (this.percentage > 100) {
+      this.percentage = 100;
+  }
+  return this.percentage
+}}
 
 export default Checker;
