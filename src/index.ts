@@ -3,6 +3,8 @@ import express, { Express } from "express";
 import path from "path";
 import homeRouter from "./routes/home";
 import bodyParser from "body-parser";
+// flash
+// import flash from "express-flash";
 // import createError from "http-errors";
 // import cookieParser from "cookie-parser";
 // import logger from "morgan";
@@ -29,6 +31,7 @@ app.use(
   })
 );
 app.use(bodyParser.json());
+// app.use(flash());
 app.use("/", homeRouter);
 // app.use("/result", homeRouter);
 

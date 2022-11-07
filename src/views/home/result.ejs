@@ -5,6 +5,14 @@
   />
 </head>
 <body>
+  <% if(error === "invalid input"){ %>
+
+  <div class="alert alert-danger mt-5" role="alert" style="width: 75%">
+    Your input headline was invalid!
+  </div>
+
+  <%} else { %>
+
   <div class="container-xl border rounded">
     <div class="col-12 p-4">
       <div name="resultDiv" class="card">
@@ -60,4 +68,5 @@
     integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
     crossorigin="anonymous"
   ></script>
+  <% } %>
 </body>

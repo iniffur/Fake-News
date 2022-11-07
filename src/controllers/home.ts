@@ -2,10 +2,12 @@ import { Request, Response } from "express";
 import Checker from "../model/home";
 import NewsFormatter from "../model/newsFormatter";
 import GoogleFormatter from "../model/googleFormatter";
+//express flash
 
 // import fetchGoogleData from "../model/fetchGoogleData";
 
 import dotenv from "dotenv";
+
 dotenv.config();
 
 const HomeController = {
@@ -21,6 +23,7 @@ const HomeController = {
   Check: async (req: Request, res: Response) => {
     const inputText = req.body.headline;
     const outputString = await new Checker(inputText).check();
+
     const googleApiStatement =
       await new GoogleFormatter().outputGoogleStatements(inputText);
     const googleApiResults = await new GoogleFormatter().outputGoogleResults(
@@ -32,6 +35,7 @@ const HomeController = {
       googleContent: googleApiStatement,
       googleResults: googleApiResults,
       headline: inputText,
+      error: outputString,
       title: "This Reeks",
     });
   },
