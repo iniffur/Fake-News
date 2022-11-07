@@ -10,17 +10,13 @@ dotenv.config();
 
 const HomeController = {
   Index: async (req: Request, res: Response) => {
-    let newsHeadlines = new NewsFormatter().outputNews();
+    const newsHeadlines = new NewsFormatter().outputNews();
 
-    newsHeadlines = newsHeadlines.sort((a: any, b: any) =>
-      (b.percentage < a.percentage )? 1 : (a.percentage < b.percentage) ? -1 : 0
-    ).reverse();
-    console.log(newsHeadlines);
-    const topTen = newsHeadlines.slice(0, 10);
+    
 
     res.render("home/index", {
       title: "This Reeks",
-      newsHeadlines: topTen,
+      newsHeadlines: newsHeadlines,
     });
   },
   Check: async (req: Request, res: Response) => {
