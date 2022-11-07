@@ -16,11 +16,13 @@
       crossorigin="anonymous"
     />
   </head>
+
   <body>
     <div class="container-xl border rounded mt-5">
       <h1 class="text-center mt-5 mb-4 ml-4 mr-4 text-secondary">
         Welcome to This Reeks!
       </h1>
+
       <div class="row p-4">
         <div class="col-4 p-4">
           <form action="/" method="POST" target="my_iframe">
@@ -37,8 +39,7 @@
                   rows="3"
                   onfocus="this.value=''"
                 >
-Headline...
-</textarea
+Headline...</textarea
                 >
                 <!-- <input type="text" name="headline" placeholder="Headline here" /> -->
                 <button class="btn btn-primary bg-gradient mt-3" type="submit">
@@ -53,20 +54,35 @@ Headline...
           <iframe name="my_iframe" src="" width="800" height="500"></iframe>
         </div>
       </div>
+
       <div class="row p-4">
-        <h3 class="text-center">
-          Today's top bullshit:
-        </h3>
-        
         <div class="col-2"></div>
+
         <div class="col-8">
+          <h3 class="text-center text-secondary p-3">Today's top bullshit:</h3>
           <div class="list-group">
             <% newsHeadlines.forEach((headline) => { %>
             <a
               href="<%=headline.url%>"
               class="list-group-item list-group-item-action"
-              ><%= headline.title %> - <%= headline.percentage%> % bullshit</a
             >
+              <div class="row">
+                <div class="col-10"><%= headline.title %></div>
+                <div class="col-2">
+                  <%= headline.percentage%>% bullshit
+                  <div class="progress">
+                    <div
+                      class="progress-bar bg-danger"
+                      role="progressbar"
+                      aria-valuenow="<%= headline.percentage%>"
+                      style="width: <%= headline.percentage%>%"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </a>
             <% }); %>
           </div>
         </div>
