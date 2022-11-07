@@ -5,16 +5,16 @@ import GoogleFormatter from "../model/googleFormatter";
 import SentimentFormatter from "../model/sentimentFormatter";
 
 import dotenv from "dotenv";
+
 dotenv.config();
 
 const HomeController = {
   Index: async (req: Request, res: Response) => {
     const newsHeadlines = new NewsFormatter().outputNews();
-    const topTen = newsHeadlines.slice(0, 10);
 
     res.render("home/index", {
       title: "This Reeks",
-      newsHeadlines: topTen,
+      newsHeadlines: newsHeadlines,
     });
   },
   Check: async (req: Request, res: Response) => {
@@ -35,6 +35,7 @@ const HomeController = {
       googleResults: googleApiResults,
       sentimentresults: sentimentApiResults,
       headline: inputText,
+      error: outputString,
       title: "This Reeks",
     });
   },
