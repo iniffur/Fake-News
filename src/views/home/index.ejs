@@ -54,24 +54,31 @@ Headline...
       </div>
       <div class="row p-4">
         <div class="col-2"></div>
+
         <div class="col-8">
           <div class="list-group">
             <% newsHeadlines.forEach((headline) => { %>
             <a
               href="<%=headline.url%>"
               class="list-group-item list-group-item-action"
-              ><%= headline.title %> - <%= headline.percentage%>% bullshit</a
             >
-            <div class="progress">
-              <div
-                class="progress-bar"
-                role="progressbar"
-                aria-valuenow="<%= headline.percentage%>"
-                style="width: <%= headline.percentage%>%"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              ></div>
-            </div>
+              <div class="row">
+                <div class="col-9"><%= headline.title %></div>
+                <div class="col-3">
+                  <%= headline.percentage%>% bullshit
+                  <div class="progress">
+                    <div
+                      class="progress-bar bg-danger"
+                      role="progressbar"
+                      aria-valuenow="<%= headline.percentage%>"
+                      style="width: <%= headline.percentage%>%"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </a>
             <% }); %>
           </div>
         </div>
