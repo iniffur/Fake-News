@@ -21,14 +21,16 @@ const HomeController = {
   Check: async (req: Request, res: Response) => {
     const inputText = req.body.headline;
     const outputString = await new Checker(inputText).check();
-    const googleApiData = await new GoogleFormatter().outputGoogleResults(
+    const googleApiStatement =
+      await new GoogleFormatter().outputGoogleStatements(inputText);
+    const googleApiResults = await new GoogleFormatter().outputGoogleResults(
       inputText
     );
 
-    console.log("displaying");
     res.render("home/result", {
       result: outputString,
-      googleContent: googleApiData,
+      googleContent: googleApiStatement,
+      googleResults: googleApiResults,
       headline: inputText,
       title: "This Reeks",
     });

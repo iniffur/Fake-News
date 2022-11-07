@@ -26,6 +26,17 @@
         <div class="card-body bg-secondary bg-opacity-25">
           <p class="card-title fw-bold">Results from Google API</p>
           <p class="card-text"><%= googleContent %></p>
+          <p class="card-text">
+          <% googleResults.forEach((ApiResult) => { %>
+            <a
+              href="<%=ApiResult.url%>"
+              class="list-group-item list-group-item-action"
+              target="_blank"
+              >Headline: <%= ApiResult.title %></a
+            >
+          <p>result: <%= ApiResult.textualRating %></p>
+            <% }); %>
+          </p>
         </div>
       </div>
     </div>

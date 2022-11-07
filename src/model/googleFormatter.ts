@@ -10,12 +10,44 @@ class GoogleFormatter {
     //   `https://factchecktools.googleapis.com/v1alpha1/claims:search?key=${googleDataApiKey}&query=${query}`
     // );
 
-    const textualRatings: any = [];
-    googleData.claims.forEach((item) => {
-      textualRatings.push(item.claimReview[0].textualRating);
+    const apiResults: any = [];
+    googleData.claims.map((claim) => {
+      apiResults.push({
+        url: claim.claimReview[0].url,
+        title: claim.claimReview[0].title,
+        textualRating: claim.claimReview[0].textualRating,
+      });
     });
 
-    return textualRatings;
+    return apiResults;
+  };
+
+  outputGoogleStatements = async (query: string) => {
+    const googleData = trumpHeadlines;
+
+    // TODO: use api instead of ukNewsHeadlinesApiOutput
+    const googleDataApiKey = process.env.GOOGLE_DATA_API_KEY;
+    // const googleData = await fetchGoogleData(
+    //   `https://factchecktools.googleapis.com/v1alpha1/claims:search?key=${googleDataApiKey}&query=${query}`
+    // );
+
+    const textualRatings: any = [];
+
+    let reeksIndex = 0;
+    googleData.claims.forEach((item) => {
+      textualRatings.push(item.claimReview[0].textualRating);
+      if (item.claimReview[0].textualRating.includes("False")) {
+        reeksIndex++;
+      }
+    });
+
+    if (textualRatings.length < 1) {
+      return "No results found - this search relies on shorter claims";
+    } else if (textualRatings.length < 4) {
+      return `Our search only found ${textualRatings.length} results, fact check may be inaccurate`;
+    } else {
+      return `${textualRatings.length} results found, ${reeksIndex} of them definitively reek`;
+    }
   };
 }
 
