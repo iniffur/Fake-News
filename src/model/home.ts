@@ -6,10 +6,109 @@ class Checker {
   list: Array<string>;
   constructor(text: string) {
     this.text = text;
-    this.count = 0
-    this.image = ""
-    this.percentage = 0
+    this.count = 0;
+    this.image = "";
+    this.percentage = 0;
     this.list = [
+      "scared",
+      "fearful",
+      "steal",
+      "stealing",
+      "taking",
+      "raping",
+      "insult",
+      "agony",
+      "suffer",
+      "pain",
+      "hardship",
+      "protect",
+      "borders",
+      "violent",
+      "violence",
+      "gory",
+      "world come to",
+      "alarming",
+      "panic",
+      "will it end",
+      "dying",
+      "death",
+      "millions",
+      "freezing",
+      "plunging",
+      "falling",
+      "scraping",
+      "pushing",
+      "terrible",
+      "gala",
+      "dress",
+      "awards",
+      "stuns",
+      "celebrities",
+      "kanye",
+      "kardashian",
+      "kim",
+      "khloe",
+      "kourtney",
+      "kylie",
+      "jenner",
+      "kris",
+      "north west",
+      "elon",
+      "musk",
+      "love island",
+      "the jungle",
+      "soap stars",
+      "wows",
+      "red carpet",
+      "had enough",
+      "it's time",
+      "stolen",
+      "election",
+      "hate",
+      "annoying",
+      "cursed",
+      "damned",
+      "sickening",
+      "sick",
+      "foreigner",
+      "force",
+      "immigrants",
+      "immigration",
+      "asylum seekers",
+      "migrants",
+      "libs",
+      "dems",
+      "gop",
+      "libtards",
+      "degenerates",
+      "red pill",
+      "black pill",
+      "blue lives matter",
+      "all lives matter",
+      "Goolag",
+      "chad",
+      "meeks",
+      "non-binary",
+      "biological",
+      "abortion is murder",
+      "killing babies",
+      "constitution",
+      "1776",
+      "where they came from",
+      "blacks",
+      "not my president",
+      "trandon",
+      "fox news",
+      "trump",
+      "trump won",
+      "poc",
+      "aoc",
+      "migrant workers",
+      "equality",
+      "universal",
+      "help",
+      "fairness",
+      "democracy",
       "to be",
       "in new",
       "exclaimed",
@@ -74,16 +173,18 @@ class Checker {
     ];
   }
   check = () => {
-    if (this.checkInput() === "invalid input") {return "invalid input"}
-    this.checkInput()
-    this.percentageCalculator()
-    this.imageSelector()
-    return [this.image, this.formatString()]
-  }
+    if (this.checkInput() === "invalid input") {
+      return "invalid input";
+    }
+    this.checkInput();
+    this.percentageCalculator();
+    this.imageSelector();
+    return [this.image, this.formatString()];
+  };
   checkInput = () => {
     this.count = 0;
-    if(this.text.trim().length <= 0){
-      return "invalid input"
+    if (this.text.trim().length <= 0) {
+      return "invalid input";
     }
     if (this.text === "") {
       return "invalid input";
@@ -94,7 +195,7 @@ class Checker {
     } else if (typeof this.text !== "string") {
       return "invalid input";
     }
-    
+
     this.list.forEach((item) => {
       if (this.text.toLowerCase().includes(item)) {
         this.count += 1;
@@ -117,27 +218,29 @@ class Checker {
         ? `${percentageString}\nSomewhat believable.\n${counterString}`
         : `${percentageString}\nTrash.\n${counterString}`;
     return outputString;
-  }
+  };
   imageSelector = () => {
     if (this.percentage <= 10) {
-      this.image = "https://drive.google.com/uc?export=view&id=1bHTWEpJKezOIc2AR8vj9EPoXiayjB3AS"
+      this.image =
+        "https://drive.google.com/uc?export=view&id=1bHTWEpJKezOIc2AR8vj9EPoXiayjB3AS";
+    } else if (this.percentage <= 30) {
+      this.image =
+        "https://drive.google.com/uc?export=view&id=1pGyUZQOkkkdYg_vMQs_U61tk35lk8KqK";
+    } else if (this.percentage <= 50) {
+      this.image =
+        "https://drive.google.com/uc?export=view&id=1UY786Is-FlA2x5i-urDDg6LKOqSRLM2R";
+    } else {
+      this.image =
+        "https://drive.google.com/uc?export=view&id=1ToGa3YmNtXEpFl3E2PqJYHyWLB-UJYDb";
     }
-    else if (this.percentage <= 30) {
-      this.image = "https://drive.google.com/uc?export=view&id=1pGyUZQOkkkdYg_vMQs_U61tk35lk8KqK"
-    }
-    else if (this.percentage <= 50) {
-      this.image = "https://drive.google.com/uc?export=view&id=1UY786Is-FlA2x5i-urDDg6LKOqSRLM2R"
-    }
-    else {
-      this.image = "https://drive.google.com/uc?export=view&id=1ToGa3YmNtXEpFl3E2PqJYHyWLB-UJYDb"
-    }
-  }
+  };
   percentageCalculator = () => {
     this.percentage = (this.count / this.text.split(" ").length) * 100;
     if (this.percentage > 100) {
       this.percentage = 100;
-  }
-  return this.percentage
-}}
+    }
+    return this.percentage;
+  };
+}
 
 export default Checker;
