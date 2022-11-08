@@ -19,48 +19,78 @@
 
   <div class="container-xl border rounded">
     <div class="col-12 p-4">
-      <div name="resultDiv" class="card">
-        <div class="card-header text-white bg-primary bg-gradient fw-bold">
-          "<%=headline%>"
+      <nav id="navbar-example2" class="navbar bg-light px-3 py-1 mb-3">
+        <a class="navbar-brand" href="#">></a>
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a class="nav-link px-2 py-1 mx-1" href="#scrollspyHeadingLocal"
+              >Bullshit check</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-2 py-1 mx-1" href="#scrollspyHeadingGoogle"
+              >Fact check</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link px-2 py-1 mx-1"
+              href="#scrollspyHeadingNegativity"
+              >Negativity</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <div
+        data-bs-spy="scroll"
+        data-bs-target="#navbar-example2"
+        data-bs-root-margin="0px 0px -40%"
+        data-bs-smooth-scroll="true"
+        class="scrollspy-example bg-light p-4 rounded-2"
+        tabindex="0"
+        style="height: 400px; overflow-y: scroll"
+      >
+        <div name="resultDiv" class="card mb-4" id="scrollspyHeadingLocal">
+          <div class="card-header text-white bg-primary bg-gradient fw-bold">
+            "<%=headline%>"
+          </div>
+          <div class="card-body bg-secondary bg-opacity-25">
+            <p class="card-title fw-bold">BullShit Stats</p>
+            <p class="card-text"><%= result %></p>
+          </div>
         </div>
-        <div class="card-body bg-secondary bg-opacity-25">
-          <p class="card-title fw-bold">BullShit Stats</p>
-          <p class="card-text"><%= result %></p>
-        </div>
-      </div>
-    </div>
 
-    <div class="col-12 p-4">
-      <div name="resultDiv" class="card">
-        <div class="card-header text-white bg-secondary bg-gradient fw-bold">
-          "<%=headline%>"
-        </div>
-        <div class="card-body bg-secondary bg-opacity-25">
-          <p class="card-title fw-bold">
-            Relevant articles from Google Fact Check
-          </p>
-          <p class="card-text"><%= googleContent %></p>
-          <button
-            class="btn btn-secondary mb-2"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseExample"
-            aria-expanded="false"
-            aria-controls="collapseExample"
-          >
-            Click to see more
-          </button>
-          <div class="collapse" id="collapseExample">
-            <div class="card card-body">
-              <% googleResults.forEach((ApiResult) => { %>
-              <a
-                href="<%=ApiResult.url%>"
-                class="list-group-item list-group-item-action link-secondary"
-                target="_blank"
-                >Headline: <%= ApiResult.title %></a
-              >
-              <p>Rating: <%= ApiResult.textualRating %></p>
-              <% }); %>
+        <div name="resultDiv" class="card mb-4" id="scrollspyHeadingGoogle">
+          <div class="card-header text-white bg-secondary bg-gradient fw-bold">
+            "<%=headline%>"
+          </div>
+          <div class="card-body bg-secondary bg-opacity-25">
+            <p class="card-title fw-bold">
+              Relevant articles from Google Fact Check
+            </p>
+            <p class="card-text"><%= googleContent %></p>
+            <button
+              class="btn btn-secondary mb-2"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseExample"
+              aria-expanded="false"
+              aria-controls="collapseExample"
+            >
+              Click to see more
+            </button>
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+                <% googleResults.forEach((ApiResult) => { %>
+                <a
+                  href="<%=ApiResult.url%>"
+                  class="list-group-item list-group-item-action link-secondary"
+                  target="_blank"
+                  >Headline: <%= ApiResult.title %></a
+                >
+                <p>Rating: <%= ApiResult.textualRating %></p>
+                <% }); %>
+              </div>
             </div>
           </div>
         </div>
@@ -167,33 +197,42 @@
           <p class="card-title fw-bold">Sentiment Checker</p>
           <p class="card-text"><%=sentimentStatement%></p>
 
-          <% if(sentimentResults < 0){ %>
-          <p class="card-text"><%=sentimentResults * -1%>% Negative</p>
-          <%} else { %>
-          <p class="card-text"><%=sentimentResults%>% Positive</p>
-          <% } %> <% if(sentimentResults >= 0){ %>
-          <div class="progress">
-            <div
-              class="progress-bar bg-success"
-              role="progressbar"
-              aria-valuenow="<%= sentimentResults%>"
-              style="width: <%= sentimentResults%>%"
-              aria-valuemin="0"
-              aria-valuemax="1"
-            ></div>
+        <div name="resultDiv" class="card" id="scrollspyHeadingNegativity">
+          <div class="card-header text-white bg-primary bg-gradient fw-bold">
+            "<%=headline%>"
           </div>
-          <%} else { %>
-          <div class="progress">
-            <div
-              class="progress-bar bg-danger"
-              role="progressbar"
-              aria-valuenow="<%= sentimentResults * -1%>"
-              style="width: <%= sentimentResults * -1%>%"
-              aria-valuemin="0"
-              aria-valuemax="1"
-            ></div>
+          <div class="card-body bg-secondary bg-opacity-25">
+            <p class="card-title fw-bold">Sentiment Checker</p>
+            <p class="card-text"><%=sentimentStatement%></p>
+
+            <% if(sentimentResults < 0){ %>
+            <p class="card-text"><%=sentimentResults * -1%>% Negative</p>
+            <%} else { %>
+            <p class="card-text"><%=sentimentResults%>% Positive</p>
+            <% } %> <% if(sentimentResults >= 0){ %>
+            <div class="progress">
+              <div
+                class="progress-bar bg-success"
+                role="progressbar"
+                aria-valuenow="<%= sentimentResults%>"
+                style="width: <%= sentimentResults%>%"
+                aria-valuemin="0"
+                aria-valuemax="1"
+              ></div>
+            </div>
+            <%} else { %>
+            <div class="progress">
+              <div
+                class="progress-bar bg-danger"
+                role="progressbar"
+                aria-valuenow="<%= sentimentResults * -1%>"
+                style="width: <%= sentimentResults * -1%>%"
+                aria-valuemin="0"
+                aria-valuemax="1"
+              ></div>
+            </div>
+            <% } %>
           </div>
-          <% } %>
         </div>
       </div>
     </div>
