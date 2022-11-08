@@ -2,9 +2,7 @@ import { Request, Response } from "express";
 import Checker from "../model/home";
 import NewsFormatter from "../model/newsFormatter";
 import GoogleFormatter from "../model/googleFormatter";
-//express flash
-
-// import fetchGoogleData from "../model/fetchGoogleData";
+import SentimentFormatter from "../model/sentimentFormatter";
 
 import dotenv from "dotenv";
 
@@ -13,8 +11,6 @@ dotenv.config();
 const HomeController = {
   Index: async (req: Request, res: Response) => {
     const newsHeadlines = new NewsFormatter().outputNews();
-
-    
 
     res.render("home/index", {
       title: "This Reeks",
@@ -29,19 +25,23 @@ const HomeController = {
     const googleApiResults = await new GoogleFormatter().outputGoogleResults(
       inputText
     );
+
+    const sentimentApiStatement =
+      await new SentimentFormatter().outputSentimentStatement(inputText);
+    const sentimentApiResults =
+      await new SentimentFormatter().outputSentimentValue(inputText);
+
     res.render("home/result", {
       result: outputString,
       googleContent: googleApiStatement,
       googleResults: googleApiResults,
+      sentimentResults: sentimentApiResults,
+      sentimentStatement: sentimentApiStatement,
       headline: inputText,
       error: outputString,
       title: "This Reeks",
     });
   },
-
-  // Result: (req: Request, res: Response) => {
-  //   res.render("home/result", { title: "This Reeks" });
-  // },
 };
 
 export default HomeController;
