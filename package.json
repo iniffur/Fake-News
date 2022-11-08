@@ -7,13 +7,12 @@
     "clean": "rimraf dist/*",
     "copy-assets": "ts-node tools/copyAssets",
     "lint": "eslint . --ext .ts",
-    "tsc-dev": "tsc -p tsconfig.build.json",
-    "build": "npm-run-all clean lint tsc-dev copy-assets",
-    "dev:start": "npm-run-all build start-dev",
+    "tscp": "tsc -p tsconfig.build.json",
+    "dev:build": "npm-run-all clean lint tscp copy-assets",
+    "build": "npm-run-all clean tscp copy-assets",
+    "dev:start": "npm-run-all dev:build start",
     "dev": "nodemon --watch src -e ts,ejs --exec npm run dev:start",
-    "start-dev": "node .",
     "start": "node dist/index.js",
-    "postinstall": "tsc",
     "test": "jest --coverage"
   },
   "repository": {
