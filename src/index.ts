@@ -13,9 +13,11 @@ import bodyParser from "body-parser";
 
 dotenv.config();
 
-const port = process.env.SERVER_PORT;
+const port = process.env.SERVER_PORT || "3000";
 
 const app: Express = express();
+
+app.set("port", port);
 
 app.use(express.static(__dirname + "/public"));
 app.set("views", path.join(__dirname, "views"));
