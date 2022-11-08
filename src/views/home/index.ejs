@@ -21,32 +21,47 @@
     />
   </head>
 
-  <body>
-    <div class="container-xl border rounded my-5">
-      <h1 class="text-center mt-5 mb-4 ml-4 mr-4 text-secondary">
-        Welcome to This Reeks!
-      </h1>
+  <body
+    style="
+      background: url('https://drive.google.com/uc?export=view&id=1kDVvJ2n8OTK7vwoOUFOuNk2Q5nDLitP9')
+        no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      background-size: cover;
+      -o-background-size: cover;
+    "
+  >
+    <div class="container-xl bg-light border rounded my-3">
+      <div class="p4">
+        <h1
+          class="text-center mt-4 mx-5 pb-1 text-secondary border-bottom border-secondary fw-bold"
+        >
+          Welcome to This Reeks!
+        </h1>
+      </div>
 
-      <div class="row p-4">
-        <div class="col-4 p-4">
+      <div class="row px-4 py-0">
+        <div class="col-3 p-4">
           <form action="/" method="POST" target="my_iframe">
             <div class="form-group">
               <div class="textInput">
                 <label class="mt-3 mb-3" for="headlineInput"
-                  >Type or paste the headline you would like to check!</label
+                  >Type or paste the headline you want to check!</label
                 >
                 <textarea
                   class="form-control"
                   id="headlineInput"
                   name="headline"
                   aria-label="With textarea"
-                  rows="3"
+                  rows="5"
                   onfocus="this.value=''"
                 >
 Headline...</textarea
                 >
-                <!-- <input type="text" name="headline" placeholder="Headline here" /> -->
-                <button class="btn btn-primary bg-gradient mt-3" type="submit">
+                <button
+                  class="btn btn-warning bg-gradient py-3 px-4 mt-3 fw-bold"
+                  type="submit"
+                >
                   Does it reek?
                 </button>
               </div>
@@ -54,21 +69,19 @@ Headline...</textarea
           </form>
         </div>
 
-        <div class="col-8 p-4">
+        <div class="col-9 p-4">
           <iframe
             class="w-100"
             name="my_iframe"
             src=""
             scrolling="no"
-            height="525"
+            height="650"
           ></iframe>
         </div>
       </div>
 
-      <div class="row p-4">
-        <div class="col-2"></div>
-
-        <div class="col-8">
+      <div class="row pt-0 pb-4 px-4">
+        <div class="col-12 pt-0 pb-4 px-4">
           <h3 class="text-center text-secondary p-3">Today's top bullshit:</h3>
           <div class="list-group">
             <% newsHeadlines.forEach((headline) => { %>
@@ -98,7 +111,6 @@ Headline...</textarea
             <% }); %>
           </div>
         </div>
-        <div class="col-2"></div>
       </div>
     </div>
 
