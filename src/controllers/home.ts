@@ -19,7 +19,9 @@ const HomeController = {
   },
   Check: async (req: Request, res: Response) => {
     const inputText = req.body.headline;
-    const outputString = await new Checker(inputText).check();
+    const outputArray = await new Checker(inputText).check();
+    const outputString = outputArray[1]
+    const resultImage = outputArray[0]
     const googleApiStatement =
       await new GoogleFormatter().outputGoogleStatements(inputText);
     const googleApiResults = await new GoogleFormatter().outputGoogleResults(
@@ -32,6 +34,7 @@ const HomeController = {
       await new SentimentFormatter().outputSentimentValue(inputText);
 
     res.render("home/result", {
+      image: resultImage,
       result: outputString,
       googleContent: googleApiStatement,
       googleResults: googleApiResults,
