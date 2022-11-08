@@ -7,6 +7,7 @@ import EmotionalAnalysisFormatter from "../model/emotionalAnalysisFormatter";
 //express flash
 
 // import fetchGoogleData from "../model/fetchGoogleData";
+import SentimentFormatter from "../model/sentimentFormatter";
 
 import dotenv from "dotenv";
 
@@ -34,6 +35,10 @@ const HomeController = {
     //   await new EmotionalAnalysisFormatter().outputEmotionalAnalysis(inputText);
     const emotionalAnalysisResults =
       await new EmotionalAnalysisFormatter().outputEmotionalAnalysis();
+    const sentimentApiStatement =
+      await new SentimentFormatter().outputSentimentStatement(inputText);
+    const sentimentApiResults =
+      await new SentimentFormatter().outputSentimentValue(inputText);
 
     res.render("home/result", {
       result: outputString,
@@ -41,15 +46,13 @@ const HomeController = {
       googleResults: googleApiResults,
       emotionalAnalysis: emotionalAnalysisResults,
       // pie: dataPie,
+      sentimentResults: sentimentApiResults,
+      sentimentStatement: sentimentApiStatement,
       headline: inputText,
       error: outputString,
       title: "This Reeks",
     });
   },
-
-  // Result: (req: Request, res: Response) => {
-  //   res.render("home/result", { title: "This Reeks" });
-  // },
 };
 
 export default HomeController;
