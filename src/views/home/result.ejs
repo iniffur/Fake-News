@@ -78,7 +78,14 @@
             We ran an emotional analysis check on this piece, and the most
             overarching emotion found was anger
           </p>
-          <canvas id="chart-pie"><%=pie%></canvas>
+          <%=emotionalAnalysis%> <% const dataPie = { type: "pie", data: {
+          labels: ["Monday", "Tuesday", "Wednesday", "Thursday"], datasets: [ {
+          data: [1234, 2234, 3234, 4234], backgroundColor: [
+          "rgba(117,169,255,0.6)", "rgba(148,223,215,0.6)",
+          "rgba(208,129,222,0.6)", "rgba(247,127,167,0.6)", ], }, ], }, }; new
+          mdb.Chart(document.getElementById("pie-chart"), dataPie); %>
+
+          <div id="pie-chart"></div>
         </div>
       </div>
     </div>

@@ -29,34 +29,18 @@ const HomeController = {
     const googleApiResults = await new GoogleFormatter().outputGoogleResults(
       inputText
     );
-    const dataPie = {
-      type: "pie",
-      data: {
-        labels: ["Monday", "Tuesday", "Wednesday", "Thursday"],
-        datasets: [
-          {
-            data: [1234, 2234, 3234, 4234],
-            backgroundColor: [
-              "rgba(117,169,255,0.6)",
-              "rgba(148,223,215,0.6)",
-              "rgba(208,129,222,0.6)",
-              "rgba(247,127,167,0.6)",
-            ],
-          },
-        ],
-      },
-    };
-    new mdb.Chart(document.getElementById("chart-pie"), dataPie);
 
+    // const emotionalAnalysisResults =
+    //   await new EmotionalAnalysisFormatter().outputEmotionalAnalysis(inputText);
     const emotionalAnalysisResults =
-      await new EmotionalAnalysisFormatter().outputEmotionalAnalysis(inputText);
+      await new EmotionalAnalysisFormatter().outputEmotionalAnalysis();
 
     res.render("home/result", {
       result: outputString,
       googleContent: googleApiStatement,
       googleResults: googleApiResults,
       emotionalAnalysis: emotionalAnalysisResults,
-      pie: dataPie,
+      // pie: dataPie,
       headline: inputText,
       error: outputString,
       title: "This Reeks",
