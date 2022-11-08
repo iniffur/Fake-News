@@ -8,6 +8,10 @@ class Checker {
     this.count = 0
     this.percentage = 0
     this.list = [
+      "to be",
+      "in new",
+      "exclaimed",
+      "' said",
       "do",
       "are",
       "?",
@@ -43,6 +47,28 @@ class Checker {
       "why",
       "reveals",
       "don't want you to know",
+      "expected",
+      "warns",
+      "a source close",
+      "to make them",
+      "could face",
+      "could be",
+      "could have",
+      "could save",
+      "could earn",
+      "should",
+      "could",
+      "would",
+      "might",
+      "possibly",
+      "nightmare",
+      "plans",
+      "how to",
+      "could this",
+      "is this the",
+      "are these the",
+      "were these the",
+      " - and",
     ];
   }
   check = () => {
