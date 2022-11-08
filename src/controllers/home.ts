@@ -3,6 +3,7 @@ import Checker from "../model/home";
 import NewsFormatter from "../model/newsFormatter";
 import GoogleFormatter from "../model/googleFormatter";
 import EmotionalAnalysisFormatter from "../model/emotionalAnalysisFormatter";
+import Chart from "chart.js";
 
 //express flash
 
@@ -31,21 +32,23 @@ const HomeController = {
       inputText
     );
 
-    // const emotionalAnalysisResults =
-    //   await new EmotionalAnalysisFormatter().outputEmotionalAnalysis(inputText);
     const emotionalAnalysisResults =
       await new EmotionalAnalysisFormatter().outputEmotionalAnalysis();
+    // const emotionalAnalysisResults =
+    //   await new EmotionalAnalysisFormatter().outputEmotionalAnalysis(inputText);
     const sentimentApiStatement =
       await new SentimentFormatter().outputSentimentStatement(inputText);
     const sentimentApiResults =
       await new SentimentFormatter().outputSentimentValue(inputText);
+
+    const emotionObject = await new EmotionalAnalysisFormatter().outputObject();
 
     res.render("home/result", {
       result: outputString,
       googleContent: googleApiStatement,
       googleResults: googleApiResults,
       emotionalAnalysis: emotionalAnalysisResults,
-      // pie: dataPie,
+      emotionObject: emotionObject,
       sentimentResults: sentimentApiResults,
       sentimentStatement: sentimentApiStatement,
       headline: inputText,

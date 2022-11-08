@@ -74,18 +74,96 @@
         </div>
         <div class="card-body bg-secondary bg-opacity-25">
           <p class="card-title fw-bold">Emotional Analysis</p>
+
+          <% const max = Math.max(...Object.values(emotionObject).slice(0, -1))
+          %> <% const maxIndex = Object.keys(emotionObject).find(key =>
+          emotionObject[key] === max) %> <% if (maxIndex === "noemo"){ %>
+          <p class="card-text">
+            We ran an emotional analysis check on this piece, and no strong
+            emotion stood out in particular
+          </p>
+          <% }else{ %>
           <p class="card-text">
             We ran an emotional analysis check on this piece, and the most
-            overarching emotion found was anger
+            overarching emotion found was: <%= maxIndex.charAt(0).toUpperCase()
+            + maxIndex.slice(1)%>
           </p>
-          <%=emotionalAnalysis%> <% const dataPie = { type: "pie", data: {
-          labels: ["Monday", "Tuesday", "Wednesday", "Thursday"], datasets: [ {
-          data: [1234, 2234, 3234, 4234], backgroundColor: [
-          "rgba(117,169,255,0.6)", "rgba(148,223,215,0.6)",
-          "rgba(208,129,222,0.6)", "rgba(247,127,167,0.6)", ], }, ], }, }; new
-          mdb.Chart(document.getElementById("pie-chart"), dataPie); %>
+          <%}%>
+          <div class="w-75">
+            <canvas id="emotionChart"></canvas>
+          </div>
 
-          <div id="pie-chart"></div>
+          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+          <script>
+            const labels = [
+              "Anger",
+              "Disgust",
+              "Fear",
+              "Joy",
+              "Love",
+              "No Emotion",
+              "Sadness",
+              "Surprise",
+            ];
+
+            const data = {
+              labels: labels,
+              datasets: [
+                {
+                  label: "My First dataset",
+                  backgroundColor: [
+                    "rgba(244, 3, 3, 0.79)",
+                    "rgba(96, 181, 4, 0.79)",
+                    "rgba(80, 73, 64, 0.94)",
+                    "rgba(49, 231, 212, 0.74)",
+                    "rgba(231, 49, 208, 0.74)",
+                    "rgba(109, 109, 109, 0.76)",
+                    "rgba(45, 58, 178, 1)",
+                    "rgba(213, 205, 40, 1)",
+                  ],
+                  data: <%- JSON.stringify(emotionalAnalysis)%>,
+                  hoverOffset: 20,
+                },
+              ],
+            };
+
+            const config = {
+              type: "doughnut",
+              data: data,
+              options: {
+                plugins: {
+                  datalabels: {
+                    formatter: (value) => {
+                      return value
+                    }
+                  },
+                  responsive: true,
+                  legend: {
+                    position: 'right',
+                    labels: {
+                      fontColor: 'white'
+                    }
+                  }
+              }
+              }
+            };
+          </script>
+          <script>
+            const myChart = new Chart(
+              document.getElementById("emotionChart"),
+              config
+            );
+          </script>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 p-4">
+      <div name="resultDiv" class="card">
+        <div class="card-header text-white bg-primary bg-gradient fw-bold">
+          "<%=headline%>"
+        </div>
+        <div class="card-body bg-secondary bg-opacity-25">
           <p class="card-title fw-bold">Sentiment Checker</p>
           <p class="card-text"><%=sentimentStatement%></p>
 
@@ -129,5 +207,6 @@
     type="text/javascript"
     src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"
   ></script>
+
   <% } %>
 </body>
