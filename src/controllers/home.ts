@@ -25,8 +25,8 @@ const HomeController = {
     });
   },
   Check: async (req: Request, res: Response) => {
-    const inputText = req.body.headline;
-
+    let inputText = req.body.headline;
+    inputText = inputText.replace(/\r/g, "").replace(/\n/g, " ");
     const outputArray = await new Checker(inputText).check();
     const outputString = outputArray[1];
     const resultImage = outputArray[0];
