@@ -18,7 +18,7 @@ const HomeController = {
   Index: async (req: Request, res: Response) => {
     const currentTime = new Date();
     const lastFetchTime = req.app.settings.latestNewsApiFetchTimes.gb;
-    const timeToWaitMillisecs = 10_000;
+    const timeToWaitMillisecs = 3600_000;
     let newsHeadlines: any;
 
     // check if enough time has passed, fetch if it has, use stored data if not
