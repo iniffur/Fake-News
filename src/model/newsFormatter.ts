@@ -5,7 +5,7 @@ class NewsFormatter {
   newsHeadlineApiKey = process.env.NEWS_HEADLINES_API_KEY;
   // TODO: use api instead of ukNewsHeadlinesApiOutput
   // const newsHeadlineData = await fetchNewsHeadline(
-  //   `https://newsapi.org/v2/top-headlines?country=gb&apiKey=${newsHeadlineApiKey}`
+  //   `https://newsapi.org/v2/top-headlines?country=${countryCode}&apiKey=${newsHeadlineApiKey}`
   // );
 
   outputNews = () => {
@@ -27,7 +27,12 @@ class NewsFormatter {
     return topTen;
   };
 
-  outputNewsUs = () => {
+  // notes on how to chnage to API:
+  // delete outputNewsUS method - change in controller to outputNews
+  //uncomment API method - remove ukNewsHeadlinesApiOutput
+  //parameter outputNews and in controller
+
+  outputNewsUS = () => {
     const newsHeadlineData = usNewsHeadlinesApiOutput;
     let newsHeadlines: any = [];
     newsHeadlineData.articles.map((article) => {

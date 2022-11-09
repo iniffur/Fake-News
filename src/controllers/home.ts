@@ -16,15 +16,11 @@ dotenv.config();
 
 const HomeController = {
   Index: async (req: Request, res: Response) => {
-    const newsHeadlines = new NewsFormatter().outputNews();
-    const newsHeadlinesUS = new NewsFormatter().outputNewsUs();
-
-    console.log(123);
+    const newsHeadlinesUK = await new NewsFormatter().outputNews();
 
     res.render("home/index", {
       title: "This Reeks",
-      newsHeadlines: newsHeadlines,
-      newsHeadlinesUS: newsHeadlinesUS,
+      newsHeadlines: newsHeadlinesUK,
     });
   },
   Check: async (req: Request, res: Response) => {
@@ -61,6 +57,22 @@ const HomeController = {
       headline: inputText,
       error: outputString,
       title: "This Reeks",
+    });
+  },
+
+  GBHeadlines: async (req: Request, res: Response) => {
+    const newsHeadlinesUk = await new NewsFormatter().outputNews();
+    res.render("home/headlines", {
+      title: "This Reeks",
+      newsHeadlines: newsHeadlinesUk,
+    });
+  },
+
+  USHeadlines: async (req: Request, res: Response) => {
+    const newsHeadlinesUS = await new NewsFormatter().outputNewsUS();
+    res.render("home/headlines", {
+      title: "This Reeks",
+      newsHeadlines: newsHeadlinesUS,
     });
   },
 };

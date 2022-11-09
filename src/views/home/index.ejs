@@ -87,38 +87,26 @@ Headline...</textarea
             Today's top bullshit:
           </h3>
           <h3 class="text-left text-warning">
-            <a onclick="ukHeadlines()"
-              ><i class="flag flag-united-kingdom" type="submit"></i></a
-            ><a onclick="usHeadlines()"
-              ><i class="flag flag-united-states" type="submit"></i></a
-            ><a><i class="flag flag-australia" type="submit"></i></a>
+            <form action="/GBHeadlines" method="POST" target="headlines_iframe">
+              <button>
+                <i class="flag flag-united-kingdom" type="submit"></i>
+              </button>
+            </form>
+            <form action="/USHeadlines" method="POST" target="headlines_iframe">
+              <button>
+                <i class="flag flag-united-states" type="submit"></i>
+              </button>
+            </form>
           </h3>
-          <div class="list-group">
-            <% allHeadlines.forEach((headline) => { %>
-            <a
-              href="<%=headline.url%>"
-              class="list-group-item list-group-item-action"
-              target=" _blank"
-              rel="noopener noreferrer"
-            >
-              <div class="row">
-                <div class="col-10"><%= headline.title %></div>
-                <div class="col-2">
-                  <%= headline.percentage%>% bullshit
-                  <div class="progress" style="height: 20px">
-                    <div
-                      class="progress-bar bg-danger"
-                      role="progressbar"
-                      aria-valuenow="<%= headline.percentage%>"
-                      style="width: <%= headline.percentage%>%"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                    ></div>
-                  </div>
-                </div>
-              </div>
-            </a>
-            <% }); %>
+          <div>
+            <iframe
+              class="w-200"
+              name="headlines_iframe"
+              src=""
+              scrolling="no"
+              width="900"
+              height="650"
+            ></iframe>
           </div>
         </div>
       </div>
