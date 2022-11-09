@@ -30,19 +30,18 @@ const HomeController = {
     const outputArray = await new Checker(inputText).check();
     const outputString = outputArray[1]
     const resultImage = outputArray[0]
-    
+    const headline = inputText.length >= 50 ? await new Checker(inputText).headlineExtractor() : inputText;
+    console.log(headline)
     const politicalBiasStatement = await new PoliticalBiasFormatter().outputBiasValue(inputText);
-
     const googleApiStatement =
-      await new GoogleFormatter().outputGoogleStatements(inputText);
+      await new GoogleFormatter().outputGoogleStatements(headline);
     const googleApiResults = await new GoogleFormatter().outputGoogleResults(
-      inputText
+      headline
     );
     const emotionalAnalysisResults =
     await new EmotionalAnalysisFormatter().outputEmotionalAnalysis();
   // const emotionalAnalysisResults =
   //   await new EmotionalAnalysisFormatter().outputEmotionalAnalysis(inputText);
-
 
     const sentimentApiStatement =
       await new SentimentFormatter().outputSentimentStatement(inputText);

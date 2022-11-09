@@ -3,12 +3,14 @@ class Checker {
   percentage: number;
   image: string;
   text: string;
+  unnecessaryWords: Array<string>;
   list: Array<string>;
   constructor(text: string) {
     this.text = text;
     this.count = 0
     this.percentage = 0
     this.image = ""
+    this.unnecessaryWords = ["of", "for", "and", "the", "is", "has", "had", "did", "if", "in", "as", "was", "were", "to", "be", "after", "star", "she", "he", "they", "with", "will", "won't", "bit", "look", "who", "man", "woman", "could", "would", "streets", "can", "say", "mob", "must", "get", "cops", "message", "reveal", "I", "went", "but", "there", "twist", "fears", "over", "under", "within", "moment", "stood", "admits", "he'd", "she'd", "he's", "she's", "their", "they're", "their"]
     this.list = [
       "to be",
       "in new",
@@ -71,6 +73,8 @@ class Checker {
       "are these the",
       "were these the",
       " - and",
+      "claims",
+      "claimed",
     ];
   }
   check = () => {
@@ -109,6 +113,12 @@ class Checker {
       this.count += 1;
     }
   };
+  headlineExtractor = () => {
+    let keyText = this.text
+    if (this.text.includes("."))
+{keyText = this.text.split(".")[0]}
+return keyText.split(" ").filter(words => this.unnecessaryWords.indexOf(words) === -1).join(" ")
+  }
   imageSelector = () => {
     if (this.percentage <= 10) {
       this.image =
