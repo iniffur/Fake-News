@@ -53,9 +53,16 @@
         tabindex="0"
         style="height: 510px; overflow-y: scroll"
       >
+        <div class="card mb-4">
+          <div class="card-body bg-warning bg-opacity-25">
+            <h5 class="card-title fw-bold">"<%=headline%>"</h5>
+            <p class="card-text">See below for results.</p>
+          </div>
+        </div>
+
         <div name="resultDiv" class="card mb-4" id="scrollspyHeadingLocal">
           <div class="card-header text-white bg-primary bg-gradient fw-bold">
-            "<%=headline%>"
+            Our local Bullshit check
           </div>
           <div class="card-body bg-secondary bg-opacity-25">
             <p class="card-title fw-bold">BullShit Stats</p>
@@ -65,7 +72,7 @@
 
         <div name="resultDiv" class="card mb-4" id="scrollspyHeadingGoogle">
           <div class="card-header text-white bg-secondary bg-gradient fw-bold">
-            "<%=headline%>"
+            Google Fact Check
           </div>
           <div class="card-body bg-secondary bg-opacity-25">
             <p class="card-title fw-bold">
@@ -100,27 +107,34 @@
 
         <div name="resultDiv" class="card mb-4" id="scrollspyHeadingEmotions">
           <div class="card-header text-white bg-primary bg-gradient fw-bold">
-            "<%=headline%>"
+            Emotional Analysis
           </div>
-          <div class="card-body bg-secondary bg-opacity-25">
+          <div class="card-body pb-0 bg-secondary bg-opacity-25">
             <p class="card-title fw-bold">Emotional Analysis</p>
 
             <% const max = Math.max(...Object.values(emotionObject).slice(0,
             -1)) %> <% const maxIndex = Object.keys(emotionObject).find(key =>
             emotionObject[key] === max) %> <% if (maxIndex === "noemo"){ %>
-            <p class="card-text">
+            <p class="card-text mb-0">
               We ran an emotional analysis check on this piece, and no strong
               emotion stood out in particular
             </p>
             <% }else{ %>
-            <p class="card-text">
+            <p class="card-text mb-0">
               We ran an emotional analysis check on this piece, and the most
               overarching emotion found was: <%=
               maxIndex.charAt(0).toUpperCase() + maxIndex.slice(1)%>
             </p>
             <%}%>
-            <div class="w-75">
-              <canvas id="emotionChart"></canvas>
+
+            <div class="container w-100">
+              <div class="row">
+                <div class="col-3"></div>
+                <div class="col-6 w-50">
+                  <canvas id="emotionChart"></canvas>
+                </div>
+                <div class="col-3"></div>
+              </div>
             </div>
 
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -162,6 +176,11 @@
                 type: "doughnut",
                 data: data,
                 options: {
+                  layout: {
+                    padding: {
+                      left: 20,
+                    }
+                  },
                   plugins: {
                     datalabels: {
                       formatter: (value) => {
@@ -179,6 +198,7 @@
                 }
               };
             </script>
+
             <script>
               const myChart = new Chart(
                 document.getElementById("emotionChart"),
@@ -190,10 +210,10 @@
 
         <div name="resultDiv" class="card" id="scrollspyHeadingNegativity">
           <div class="card-header text-white bg-primary bg-gradient fw-bold">
-            "<%=headline%>"
+            Sentiment Checker
           </div>
           <div class="card-body bg-secondary bg-opacity-25">
-            <p class="card-title fw-bold">Sentiment Checker</p>
+            <p class="card-title fw-bold">Positive <--> Negative sentiment</p>
             <p class="card-text"><%=sentimentStatement%></p>
 
             <% if(sentimentResults < 0){ %>
