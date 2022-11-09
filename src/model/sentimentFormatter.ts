@@ -6,6 +6,7 @@ class SentimentFormatter {
       "https://text-analysis12.p.rapidapi.com/sentiment-analysis/api/v1.1",
       query
     );
+
     if (sentimentData.msg === "something went wrong on the server") {
       return "invalid Input";
     } else {

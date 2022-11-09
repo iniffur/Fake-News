@@ -56,9 +56,13 @@
         <div class="card mb-4">
           <div class="card-body bg-warning bg-opacity-25">
             <h5 class="card-title fw-bold">"<%=headline%>"</h5>
-            <img src="<%=image%>" class="rounded float-right">
-            
+
             <p class="card-text">See below for results.</p>
+            <img
+              src="<%=image%>"
+              class="rounded float-right d-flex justify-content-end"
+              style="height: 100px; width: 100px"
+            />
           </div>
         </div>
 
@@ -210,7 +214,7 @@
           </div>
         </div>
 
-        <div name="resultDiv" class="card" id="scrollspyHeadingNegativity">
+        <div name="resultDiv" class="card mb-4" id="scrollspyHeadingNegativity">
           <div class="card-header text-white bg-primary bg-gradient fw-bold">
             Sentiment Checker
           </div>
@@ -245,6 +249,15 @@
               ></div>
             </div>
             <% } %>
+          </div>
+        </div>
+        <div name="resultDiv" class="card mb-4" id="scrollspyHeadingLocal">
+          <div class="card-header text-white bg-primary bg-gradient fw-bold">
+            Politics result
+          </div>
+          <div class="card-body bg-secondary bg-opacity-25">
+            <p class="card-title fw-bold">rating</p>
+            <p class="card-text"><%= politicalBias %></p>
           </div>
         </div>
       </div>

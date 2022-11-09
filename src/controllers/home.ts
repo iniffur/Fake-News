@@ -11,7 +11,6 @@ import Chart from "chart.js";
 import SentimentFormatter from "../model/sentimentFormatter";
 import PoliticalBiasFormatter from "../model/politicalBiasFormatter";
 
-
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -27,11 +26,13 @@ const HomeController = {
   },
   Check: async (req: Request, res: Response) => {
     const inputText = req.body.headline;
+
     const outputArray = await new Checker(inputText).check();
-    const outputString = outputArray[1]
-    const resultImage = outputArray[0]
-    
-    const politicalBiasStatement = await new PoliticalBiasFormatter().outputBiasValue(inputText);
+    const outputString = outputArray[1];
+    const resultImage = outputArray[0];
+
+    const politicalBiasStatement =
+      await new PoliticalBiasFormatter().outputBiasValue(inputText);
 
     const googleApiStatement =
       await new GoogleFormatter().outputGoogleStatements(inputText);
@@ -39,16 +40,15 @@ const HomeController = {
       inputText
     );
     const emotionalAnalysisResults =
-    await new EmotionalAnalysisFormatter().outputEmotionalAnalysis();
-  // const emotionalAnalysisResults =
-  //   await new EmotionalAnalysisFormatter().outputEmotionalAnalysis(inputText);
-
+      await new EmotionalAnalysisFormatter().outputEmotionalAnalysis();
+    // const emotionalAnalysisResults =
+    //   await new EmotionalAnalysisFormatter().outputEmotionalAnalysis(inputText);
 
     const sentimentApiStatement =
       await new SentimentFormatter().outputSentimentStatement(inputText);
     const sentimentApiResults =
       await new SentimentFormatter().outputSentimentValue(inputText);
-      const emotionObject = await new EmotionalAnalysisFormatter().outputObject();
+    const emotionObject = await new EmotionalAnalysisFormatter().outputObject();
     res.render("home/result", {
       image: resultImage,
       result: outputString,
