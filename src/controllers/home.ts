@@ -28,6 +28,7 @@ const HomeController = {
     let inputText = req.body.headline;
     inputText = inputText.replace(/\r/g, "").replace(/\n/g, " ");
     const outputArray = await new Checker(inputText).check();
+
     const outputString = outputArray[1];
     const resultImage = outputArray[0];
 
@@ -60,7 +61,7 @@ const HomeController = {
       sentimentResults: sentimentApiResults,
       sentimentStatement: sentimentApiStatement,
       headline: inputText,
-      error: outputString,
+      error: outputArray,
       title: "This Reeks",
     });
   },
