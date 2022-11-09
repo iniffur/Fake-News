@@ -10,7 +10,7 @@ class SentimentFormatter {
     if (sentimentData.msg === "something went wrong on the server") {
       return "invalid Input";
     } else {
-      return sentimentData.aggregate_sentiment.compound * 100;
+      return Math.round(sentimentData.aggregate_sentiment.compound * 100);
     }
   };
 

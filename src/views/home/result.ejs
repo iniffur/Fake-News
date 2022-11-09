@@ -41,6 +41,11 @@
               >Negativity</a
             >
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#scrollspyHeadingPoliticalBias"
+              >Political bias</a
+            >
+          </li>
         </ul>
       </nav>
 
@@ -238,7 +243,7 @@
               ></div>
             </div>
             <%} else { %>
-            <div class="progress">
+            <div class="progress" style="height: 20px">
               <div
                 class="progress-bar bg-danger"
                 role="progressbar"
@@ -251,7 +256,11 @@
             <% } %>
           </div>
         </div>
-        <div name="resultDiv" class="card mb-4" id="scrollspyHeadingLocal">
+        <div
+          name="resultDiv"
+          class="card mb-4"
+          id="scrollspyHeadingPoliticalBias"
+        >
           <div class="card-header text-white bg-primary bg-gradient fw-bold">
             Politics result
           </div>
@@ -259,10 +268,33 @@
             <p class="card-title fw-bold">Left-wing <--> Right-wing</p>
             <% if(politicalBias < 0){ %>
             <p class="card-text">This statement leans to the left</p>
+            <p class="card-text"><%= (politicalBias) * -1%>%</p>
             <%} else { %>
             <p class="card-text">This statement leans to the right</p>
+            <p class="card-text"><%= (politicalBias) %>%</p>
+            <% } %> <% if(politicalBias >= 0){ %>
+            <div class="progress" style="height: 20px">
+              <div
+                class="progress-bar bg-danger"
+                role="progressbar"
+                aria-valuenow="<%= politicalBias%>"
+                style="width: <%= politicalBias%>%"
+                aria-valuemin="0"
+                aria-valuemax="1"
+              ></div>
+            </div>
+            <%} else { %>
+            <div class="progress" style="height: 20px">
+              <div
+                class="progress-bar bg-primary"
+                role="progressbar"
+                aria-valuenow="<%= politicalBias *-1%>"
+                style="width: <%= politicalBias * -1%>%"
+                aria-valuemin="0"
+                aria-valuemax="1"
+              ></div>
+            </div>
             <% } %>
-            <p class="card-text"><%= politicalBias %></p>
           </div>
         </div>
       </div>
