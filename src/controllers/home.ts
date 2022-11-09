@@ -17,11 +17,41 @@ dotenv.config();
 
 const HomeController = {
   Index: async (req: Request, res: Response) => {
-    const newsHeadlines = new NewsFormatter().outputNews();
+    const newsHeadlinesUK = await new NewsFormatter().outputNews();
+    const currentTime = new Date();
+    const lastFetchTime = req.app.settings.latestNewsApiFetchTimes.gb;
+    const timeToWaitMillisecs = 3600_000;
+    let newsHeadlines: any;
+
+    // check if enough time has passed, fetch if it has, use stored data if not
+    if (currentTime.getTime() < lastFetchTime.getTime() + timeToWaitMillisecs) {
+      newsHeadlines = req.app.settings.newsHeadlines.gb;
+      // debug statements, to use when integrating flags
+      // console.log(
+      //   `${
+      //     (currentTime.getTime() - lastFetchTime.getTime()) / 1000
+      //   } secs difference`
+      // );
+      // console.log(`difference SMALLER than ${timeToWaitMillisecs / 1000} secs`);
+      // console.log(`using locally stored data`);
+    } else {
+      // do fetch request, update local headlines data and latest fetch time
+      newsHeadlines = new NewsFormatter().outputNews();
+      req.app.settings.newsHeadlines.gb = newsHeadlines;
+      req.app.settings.latestNewsApiFetchTimes.gb = currentTime;
+      // debug statements, to use when integrating flags
+      // console.log(
+      //   `${
+      //     (currentTime.getTime() - lastFetchTime.getTime()) / 1000
+      //   } secs difference`
+      // );
+      // console.log(`difference BIGGER than ${timeToWaitMillisecs / 1000} secs`);
+      // console.log(`new fetch requst done`);
+    }
 
     res.render("home/index", {
       title: "This Reeks",
-      newsHeadlines: newsHeadlines,
+      newsHeadlines: newsHeadlinesUK,
     });
   },
   Check: async (req: Request, res: Response) => {
@@ -63,6 +93,22 @@ const HomeController = {
       headline: inputText,
       error: outputArray,
       title: "This Reeks",
+    });
+  },
+
+  GBHeadlines: async (req: Request, res: Response) => {
+    const newsHeadlinesUk = await new NewsFormatter().outputNews();
+    res.render("home/headlines", {
+      title: "This Reeks",
+      newsHeadlines: newsHeadlinesUk,
+    });
+  },
+
+  USHeadlines: async (req: Request, res: Response) => {
+    const newsHeadlinesUS = await new NewsFormatter().outputNewsUS();
+    res.render("home/headlines", {
+      title: "This Reeks",
+      newsHeadlines: newsHeadlinesUS,
     });
   },
 };
