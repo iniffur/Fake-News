@@ -256,7 +256,12 @@
             Politics result
           </div>
           <div class="card-body bg-secondary bg-opacity-25">
-            <p class="card-title fw-bold">rating</p>
+            <p class="card-title fw-bold">Left-wing <--> Right-wing</p>
+            <% if(politicalBias < 0){ %>
+            <p class="card-text">This statement leans to the left</p>
+            <%} else { %>
+            <p class="card-text">This statement leans to the right</p>
+            <% } %>
             <p class="card-text"><%= politicalBias %></p>
           </div>
         </div>
