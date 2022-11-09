@@ -86,8 +86,15 @@ Headline...</textarea
           <h3 class="text-center text-warning mt-2 mb-0 p-3">
             Today's top bullshit:
           </h3>
+          <h3 class="text-left text-warning">
+            <a onclick="ukHeadlines()"
+              ><i class="flag flag-united-kingdom" type="submit"></i></a
+            ><a onclick="usHeadlines()"
+              ><i class="flag flag-united-states" type="submit"></i></a
+            ><a><i class="flag flag-australia" type="submit"></i></a>
+          </h3>
           <div class="list-group">
-            <% newsHeadlines.forEach((headline) => { %>
+            <% allHeadlines.forEach((headline) => { %>
             <a
               href="<%=headline.url%>"
               class="list-group-item list-group-item-action"

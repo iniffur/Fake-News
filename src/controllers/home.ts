@@ -17,10 +17,14 @@ dotenv.config();
 const HomeController = {
   Index: async (req: Request, res: Response) => {
     const newsHeadlines = new NewsFormatter().outputNews();
+    const newsHeadlinesUS = new NewsFormatter().outputNewsUs();
+
+    console.log(123);
 
     res.render("home/index", {
       title: "This Reeks",
       newsHeadlines: newsHeadlines,
+      newsHeadlinesUS: newsHeadlinesUS,
     });
   },
   Check: async (req: Request, res: Response) => {
