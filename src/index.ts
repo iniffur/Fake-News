@@ -19,6 +19,13 @@ const port = process.env.PORT || 3005;
 
 const app: Express = express();
 
+// setup for local store of newsHeadlines data and conditional news api fetch
+const epochStartTime = new Date(0);
+app.set("latestNewsApiFetchTimes", { gb: epochStartTime, us: epochStartTime });
+let gbNewsHeadlines: any;
+let usNewsHeadlines: any;
+app.set("newsHeadlines", { gb: gbNewsHeadlines, us: usNewsHeadlines });
+
 app.set("port", port);
 
 app.use(express.static(__dirname + "/public"));
