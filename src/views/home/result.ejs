@@ -266,11 +266,9 @@
           </div>
           <div class="card-body bg-secondary bg-opacity-25">
             <p class="card-title fw-bold">Left-wing <--> Right-wing</p>
-            <% if(politicalBias > -5 && politicalBias < 5){%></5>
-              %>
-              <p class="card-text">This statement is fairly neutral</p>
-              <%}%>
-            <% if(politicalBias < 0){ %>
+            <% if (politicalBias > -5 && politicalBias < 5) { %>
+            <p class="card-text">This statement is fairly neutral</p>
+            <% } %> <% if(politicalBias < 0){ %>
             <p class="card-text">This statement leans to the left</p>
             <p class="card-text"><%= (politicalBias) * -1%>%</p>
             <%} else { %>
