@@ -24,7 +24,10 @@ const HomeController = {
     });
   },
   Check: async (req: Request, res: Response) => {
-    const inputText = req.body.headline;
+    let inputText = req.body.headline;
+
+    inputText = inputText.replace(/\r/g, "").replace(/\n/g, " ");
+
     const outputString = await new Checker(inputText).check();
     const googleApiStatement =
       await new GoogleFormatter().outputGoogleStatements(inputText);
