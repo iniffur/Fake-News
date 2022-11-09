@@ -111,6 +111,15 @@ const HomeController = {
       newsHeadlines: newsHeadlinesUS,
     });
   },
+
+  TopicHeadlines: async (req: Request, res: Response) => {
+    const topic = req.body.inputTopic;
+    const newsHeadlinesTopic = await new NewsFormatter().outputNewsByTopic();
+    res.render("home/headlines", {
+      title: "This Reeks",
+      newsHeadlines: newsHeadlinesTopic,
+    });
+  },
 };
 
 export default HomeController;
