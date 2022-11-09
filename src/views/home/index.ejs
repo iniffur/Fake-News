@@ -97,6 +97,34 @@ Headline...</textarea
                 <i class="flag flag-united-states" type="submit"></i>
               </button>
             </form>
+
+            <form
+              action="/TopicHeadlines"
+              method="POST"
+              target="headlines_iframe"
+            >
+              <div class="form-group">
+                <div class="inputTopic">
+                  <textarea
+                    class="form-control"
+                    id="topicInput"
+                    name="inputTopic"
+                    aria-label="With textarea"
+                    maxlength="150"
+                    rows="5"
+                    onfocus="this.value=''"
+                  >
+  Topic...</textarea
+                  >
+                  <button
+                    class="btn btn-warning bg-gradient py-3 px-4 mt-3 fw-bold"
+                    type="submit"
+                  >
+                    Search Topic
+                  </button>
+                </div>
+              </div>
+            </form>
           </h3>
           <div>
             <iframe

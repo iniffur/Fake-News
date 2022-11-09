@@ -1,4 +1,4 @@
-// import fetchNewsHeadline from "./fetchNewsHeadline";
+import fetchNewsHeadline from "./fetchNewsHeadline";
 import Checker from "./home";
 
 class NewsFormatter {
@@ -51,6 +51,30 @@ class NewsFormatter {
     return topTen;
   };
 
+  outputNewsByTopic = async () => {
+    // const newsHeadlineApiKey = process.env.NEWS_HEADLINES_API_KEY;
+
+    // const newsHeadlineData = await fetchNewsHeadline(
+    //   `https://newsapi.org/v2/everything?q=${topic}&language=en&apiKey=${newsHeadlineApiKey}`
+    // );
+    const newsHeadlineData = bitcoinApiOutput;
+    let newsHeadlines: any = [];
+    newsHeadlineData.articles.map((article: any) => {
+      newsHeadlines.push({ title: article.title, url: article.url });
+    });
+    newsHeadlines.map((hash: any) => {
+      hash.percentage = Math.round(this.headlineCheck(hash.title));
+    });
+    newsHeadlines = newsHeadlines
+      .sort((a: any, b: any) =>
+        b.percentage < a.percentage ? 1 : a.percentage < b.percentage ? -1 : 0
+      )
+      .reverse();
+    const topTen = newsHeadlines.slice(0, 10);
+
+    return topTen;
+  };
+
   headlineCheck = (headline: any) => {
     const checker = new Checker(headline);
     checker.checkInput();
@@ -58,6 +82,37 @@ class NewsFormatter {
   };
 }
 export default NewsFormatter;
+
+const bitcoinApiOutput = {
+  status: "ok",
+  totalResults: 0,
+  articles: [
+    {
+      title:
+        "Google’s partnering with Coinbase to let cloud customers pay in crypto next year",
+      author: "Emma Roth",
+      source: { Id: "the-verge", Name: "The Verge" },
+      publishedAt: "2022-10-11T14:29:54Z",
+      url: "https://www.theverge.com/2022/10/11/23398306/google-coinbase-partnership-crypto-2023-cloud",
+    },
+    {
+      title:
+        "Google’s partnering with Coinbase to let cloud customers pay in crypto next year",
+      author: "Emma Roth",
+      source: { Id: "the-verge", Name: "The Verge" },
+      publishedAt: "2022-10-11T14:29:54Z",
+      url: "https://www.theverge.com/2022/10/11/23398306/google-coinbase-partnership-crypto-2023-cloud",
+    },
+    {
+      title:
+        "T20 World Cup 2022 Super 12s: Australia beat Afghanistan by four runs – as it happened - The Guardian",
+      author: "https://www.theguardian.com/profile/jonathan-howcroft",
+      source: { Id: null, Name: "The Guardian" },
+      publishedAt: "2022-11-04T12:12:09Z",
+      url: "https://www.theguardian.com/sport/live/2022/nov/04/t20-world-cup-cricket-australia-vs-afghanistan-live-scores-updates-2022-super-12-12s-scorecard-aus-v-afg-latest-score",
+    },
+  ],
+};
 
 const ukNewsHeadlinesApiOutput = {
   status: "ok",

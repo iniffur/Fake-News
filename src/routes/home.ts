@@ -7,4 +7,5 @@ router.get("/", HomeController.Index);
 router.post("/", HomeController.Check);
 router.post("/GBHeadlines", HomeController.GBHeadlines);
 router.post("/USHeadlines", HomeController.USHeadlines);
+router.post("/TopicHeadlines", HomeController.TopicHeadlines);
 export default router;
