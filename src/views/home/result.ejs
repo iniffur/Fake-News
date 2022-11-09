@@ -41,6 +41,11 @@
               >Negativity</a
             >
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#scrollspyHeadingPoliticalBias"
+              >Political bias</a
+            >
+          </li>
         </ul>
       </nav>
 
@@ -56,7 +61,13 @@
         <div class="card mb-4">
           <div class="card-body bg-warning bg-opacity-25">
             <h5 class="card-title fw-bold">"<%=headline%>"</h5>
+
             <p class="card-text">See below for results.</p>
+            <img
+              src="<%=image%>"
+              class="rounded float-right d-flex justify-content-end"
+              style="height: 100px; width: 100px"
+            />
           </div>
         </div>
 
@@ -208,7 +219,7 @@
           </div>
         </div>
 
-        <div name="resultDiv" class="card" id="scrollspyHeadingNegativity">
+        <div name="resultDiv" class="card mb-4" id="scrollspyHeadingNegativity">
           <div class="card-header text-white bg-primary bg-gradient fw-bold">
             Sentiment Checker
           </div>
@@ -232,12 +243,57 @@
               ></div>
             </div>
             <%} else { %>
-            <div class="progress">
+            <div class="progress" style="height: 20px">
               <div
                 class="progress-bar bg-danger"
                 role="progressbar"
                 aria-valuenow="<%= sentimentResults * -1%>"
                 style="width: <%= sentimentResults * -1%>%"
+                aria-valuemin="0"
+                aria-valuemax="1"
+              ></div>
+            </div>
+            <% } %>
+          </div>
+        </div>
+        <div
+          name="resultDiv"
+          class="card mb-4"
+          id="scrollspyHeadingPoliticalBias"
+        >
+          <div class="card-header text-white bg-primary bg-gradient fw-bold">
+            Politics result
+          </div>
+          <div class="card-body bg-secondary bg-opacity-25">
+            <p class="card-title fw-bold">Left-wing <--> Right-wing</p>
+            <% if(politicalBias > -5 && politicalBias < 5){%></5>
+              %>
+              <p class="card-text">This statement is fairly neutral</p>
+              <%}%>
+            <% if(politicalBias < 0){ %>
+            <p class="card-text">This statement leans to the left</p>
+            <p class="card-text"><%= (politicalBias) * -1%>%</p>
+            <%} else { %>
+            <p class="card-text">This statement leans to the right</p>
+            <p class="card-text"><%= (politicalBias) %>%</p>
+            <% } %> <% if(politicalBias >= 0){ %>
+            <div class="progress" style="height: 20px">
+              <div
+                class="progress-bar bg-danger"
+                role="progressbar"
+                aria-valuenow="<%= politicalBias%>"
+                style="width: <%= politicalBias%>%"
+                aria-valuemin="0"
+                aria-valuemax="1"
+              ></div>
+            </div>
+            <%} else { %>
+            <div class="progress" style="height: 20px">
+              <div
+                class="progress-bar bg-primary"
+                role="progressbar"
+                aria-valuenow="<%= politicalBias *-1%>"
+                style="width: <%= politicalBias * -1%>%"
                 aria-valuemin="0"
                 aria-valuemax="1"
               ></div>

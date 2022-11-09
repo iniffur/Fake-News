@@ -1,12 +1,14 @@
 class Checker {
   count: number;
   percentage: number;
+  image: string;
   text: string;
   list: Array<string>;
   constructor(text: string) {
     this.text = text;
     this.count = 0;
     this.percentage = 0;
+    this.image = "";
     this.list = [
       "to be",
       "in new",
@@ -77,7 +79,8 @@ class Checker {
     }
     this.checkInput();
     this.percentageCalculator();
-    return this.formatString();
+    this.imageSelector();
+    return [this.image, this.formatString()];
   };
   checkInput = () => {
     this.count = 0;
@@ -107,6 +110,21 @@ class Checker {
     });
     if (this.text.toUpperCase() === this.text) {
       this.count += 1;
+    }
+  };
+  imageSelector = () => {
+    if (this.percentage <= 10) {
+      this.image =
+        "https://drive.google.com/uc?export=view&id=1bHTWEpJKezOIc2AR8vj9EPoXiayjB3AS";
+    } else if (this.percentage <= 30) {
+      this.image =
+        "https://drive.google.com/uc?export=view&id=1pGyUZQOkkkdYg_vMQs_U61tk35lk8KqK";
+    } else if (this.percentage <= 50) {
+      this.image =
+        "https://drive.google.com/uc?export=view&id=1UY786Is-FlA2x5i-urDDg6LKOqSRLM2R";
+    } else {
+      this.image =
+        "https://drive.google.com/uc?export=view&id=1ToGa3YmNtXEpFl3E2PqJYHyWLB-UJYDb";
     }
   };
   formatString = () => {
