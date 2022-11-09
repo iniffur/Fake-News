@@ -3,6 +3,8 @@ import express, { Express } from "express";
 import path from "path";
 import homeRouter from "./routes/home";
 import bodyParser from "body-parser";
+import http from "http";
+
 // flash
 // import flash from "express-flash";
 // import createError from "http-errors";
@@ -13,9 +15,11 @@ import bodyParser from "body-parser";
 
 dotenv.config();
 
-const port = process.env.SERVER_PORT;
+const port = process.env.PORT || 3005;
 
 const app: Express = express();
+
+app.set("port", port);
 
 app.use(express.static(__dirname + "/public"));
 app.set("views", path.join(__dirname, "views"));
@@ -35,8 +39,18 @@ app.use(bodyParser.json());
 app.use("/", homeRouter);
 // app.use("/result", homeRouter);
 
-app.listen(port, () => {
-  console.log(`server started at http://localhost:${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`server started at with port number ${port}`);
+// });
+
+const server = http.createServer(app);
+server.listen(port);
+server.on("listening", onListening);
+
+function onListening() {
+  const addr = server.address();
+  const bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
+  console.log("Now listening on " + bind);
+}
 
 export default app;
