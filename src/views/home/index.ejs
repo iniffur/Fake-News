@@ -60,10 +60,10 @@
 Headline...</textarea
                 >
                 <button
-                  class="btn btn-warning bg-gradient py-3 px-4 mt-3 fw-bold"
+                  class="btn btn-warning bg-gradient mt-3 fw-bold"
                   type="submit"
                 >
-                  Does it reek?
+                  <span style="font-size: 1.25em">Does it reek?</span>
                 </button>
               </div>
             </div>
@@ -82,57 +82,123 @@ Headline...</textarea
       </div>
 
       <div class="row pt-0 pb-4 px-5 justify-content-center">
-        <div class="col-12 pt-0 pb-4 px-4 rounded bg-warning bg-opacity-25">
-          <h3 class="text-center text-warning mt-2 mb-0 p-3">
-            Today's top bullshit:
-          </h3>
-          <h3 class="text-left text-warning">
-            <form action="/GBHeadlines" method="POST" target="headlines_iframe">
-              <button>
-                <i class="flag flag-united-kingdom" type="submit"></i>
-              </button>
-            </form>
-            <form action="/USHeadlines" method="POST" target="headlines_iframe">
-              <button>
-                <i class="flag flag-united-states" type="submit"></i>
-              </button>
-            </form>
+        <div class="col-12 pt-3 pb-4 px-4 rounded bg-warning bg-opacity-25">
+          <div class="row mx-4 mt-2 mb-2 p-0 rounded align-items-center">
+            <!-- Section title-->
+            <div class="col-12">
+              <h3 class="mt-2 mb-2 p-2 text-warning text-center fw-bold">
+                News clickbait
+              </h3>
+            </div>
+          </div>
+          <!-- Row with per country title and buttons -->
+          <div
+            class="row mx-4 mt-2 mb-2 p-0 rounded bg-light align-items-center"
+          >
+            <!-- Title row 1-->
+            <div class="col-8">
+              <h3 class="text-warning mt-2 mb-2 p-2">
+                See dodgiest news headlines from a country:
+              </h3>
+            </div>
+            <!-- Button 1 -->
+            <div class="col-2">
+              <form
+                action="/GBHeadlines"
+                method="POST"
+                target="headlines_iframe"
+              >
+                <button
+                  class="btn btn-warning bg-gradient fw-bold"
+                  type="submit"
+                >
+                  <i class="flag flag-united-kingdom"></i
+                  ><span style="font-size: 1.5em"> UK</span>
+                </button>
+              </form>
+            </div>
+            <!-- Button 2 -->
+            <div class="col-2">
+              <form
+                action="/USHeadlines"
+                method="POST"
+                target="headlines_iframe"
+              >
+                <button
+                  class="btn btn-warning bg-gradient fw-bold"
+                  type="submit"
+                >
+                  <i class="flag flag-united-states"></i
+                  ><span style="font-size: 1.5em"> US</span>
+                </button>
+              </form>
+            </div>
+          </div>
 
-            <form
-              action="/TopicHeadlines"
-              method="POST"
-              target="headlines_iframe"
-            >
-              <div class="form-group">
-                <div class="inputTopic">
-                  <textarea
-                    class="form-control"
-                    id="topicInput"
-                    name="inputTopic"
-                    aria-label="With textarea"
-                    maxlength="150"
-                    rows="5"
-                    onfocus="this.value=''"
-                  >
-  Topic...</textarea
-                  >
-                  <button
-                    class="btn btn-warning bg-gradient py-3 px-4 mt-3 fw-bold"
-                    type="submit"
-                  >
-                    Search Topic
-                  </button>
+          <!-- Row with search -->
+          <div
+            class="row mx-4 mt-2 mb-3 p-0 rounded bg-light align-items-center"
+          >
+            <!-- Title row search-->
+            <div class="col-6">
+              <h3 class="text-warning mt-2 mb-2 p-2">
+                Or see ones on a topic:
+              </h3>
+            </div>
+
+            <div class="col-6">
+              <form
+                action="/TopicHeadlines"
+                method="POST"
+                target="headlines_iframe"
+              >
+                <div class="form-group">
+                  <div class="inputTopic">
+                    <!-- <textarea
+                      class="form-control"
+                      id="topicInput"
+                      name="inputTopic"
+                      aria-label="With textarea"
+                      maxlength="150"
+                      rows="2"
+                      onfocus="this.value=''"
+                    >
+Topic...</textarea
+                    > -->
+                    <div class="row align-items-center">
+                      <div class="col-8">
+                        <input
+                          class="form-control w-100"
+                          id="topicInput"
+                          name="inputTopic"
+                          type="text"
+                          maxlength="150"
+                          placeholder="Enter topic"
+                          aria-label="With textarea"
+                          onfocus="this.value=''"
+                        />
+                      </div>
+                      <div class="col-4">
+                        <button
+                          class="btn btn-warning bg-gradient fw-bold"
+                          type="submit"
+                        >
+                          <span style="font-size: 1.25em">Search</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </form>
-          </h3>
-          <div>
+              </form>
+            </div>
+          </div>
+
+          <div class="row rounded bg-light mt-0 mb-4 mx-4 p-2">
             <iframe
-              class="w-200"
+              class="w-100 m-0 p-0"
               name="headlines_iframe"
               src=""
               scrolling="no"
-              width="900"
               height="650"
             ></iframe>
           </div>
