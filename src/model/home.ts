@@ -114,17 +114,13 @@ class Checker {
   };
   imageSelector = () => {
     if (this.percentage <= 10) {
-      this.image =
-        "https://drive.google.com/uc?export=view&id=1bHTWEpJKezOIc2AR8vj9EPoXiayjB3AS";
+      this.image = "https://i.imgur.com/8nXCwCN.jpg";
     } else if (this.percentage <= 30) {
-      this.image =
-        "https://drive.google.com/uc?export=view&id=1pGyUZQOkkkdYg_vMQs_U61tk35lk8KqK";
+      this.image = "https://i.imgur.com/iHSpK2m.jpg";
     } else if (this.percentage <= 50) {
-      this.image =
-        "https://drive.google.com/uc?export=view&id=1UY786Is-FlA2x5i-urDDg6LKOqSRLM2R";
+      this.image = "https://i.imgur.com/0PtFy0H.jpg";
     } else {
-      this.image =
-        "https://drive.google.com/uc?export=view&id=1ToGa3YmNtXEpFl3E2PqJYHyWLB-UJYDb";
+      this.image = "https://i.imgur.com/6zuePPv.jpg";
     }
   };
   formatString = () => {
