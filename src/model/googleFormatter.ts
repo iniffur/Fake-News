@@ -14,7 +14,6 @@ class GoogleFormatter {
     const googleData = await fetchGoogleData(
       `https://factchecktools.googleapis.com/v1alpha1/claims:search?&query=${query}&key=${googleDataApiKey}`
     );
-    console.log(googleData);
     if (JSON.stringify(googleData) === "{}") {
       return "No results found";
     }
@@ -26,8 +25,6 @@ class GoogleFormatter {
       });
     });
 
-    console.log(this.apiResults);
-
     return this.apiResults;
   };
 
@@ -37,7 +34,6 @@ class GoogleFormatter {
     );
 
     const textualRatings: any = [];
-    console.log(googleData);
     if (JSON.stringify(googleData) === "{}") {
       return "No results found";
     }
