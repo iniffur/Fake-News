@@ -19,6 +19,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css"
       rel="stylesheet"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   </head>
 
   <body
@@ -88,7 +89,7 @@ Headline...</textarea
           </h3>
           <h3 class="text-left text-warning">
             <form action="/GBHeadlines" method="POST" target="headlines_iframe">
-              <button>
+              <button id="modal" data-modal="modal">
                 <i class="flag flag-united-kingdom" type="submit"></i>
               </button>
             </form>
@@ -141,7 +142,11 @@ Headline...</textarea
     </div>
 
     <!-- JavaScript Bundle with Popper -->
-
+    <script>
+      jQuery(function () {
+        jQuery("#modal").click();
+      });
+    </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
