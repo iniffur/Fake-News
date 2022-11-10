@@ -184,11 +184,15 @@
             Emotional Analysis
           </div>
           <div class="card-body pb-0 bg-secondary bg-opacity-25">
-            <p class="card-title fw-bold">Emotional Analysis</p>
-
             <% const max = Math.max(...Object.values(emotionObject).slice(0,
             -1)) %> <% const maxIndex = Object.keys(emotionObject).find(key =>
-            emotionObject[key] === max) %> <% if (maxIndex === "noemo"){ %>
+            emotionObject[key] === max) %>
+            <p class="card-title fw-bold">
+              <%= maxIndex.charAt(0).toUpperCase() + maxIndex.slice(1)%>
+              detected!
+            </p>
+
+            <% if (maxIndex === "noemo"){ %>
             <p class="card-text mb-0">
               We ran an emotional analysis check on this piece, and no strong
               emotion stood out in particular
