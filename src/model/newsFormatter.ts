@@ -8,8 +8,12 @@ class NewsFormatter {
   //   `https://newsapi.org/v2/top-headlines?country=${countryCode}&apiKey=${newsHeadlineApiKey}`
   // );
 
-  outputNews = () => {
-    const newsHeadlineData = ukNewsHeadlinesApiOutput;
+  outputNews = async (countryCode: string) => {
+    const newsHeadlineApiKey = process.env.NEWS_HEADLINES_API_KEY;
+    // TODO: use api instead of ukNewsHeadlinesApiOutput
+    const newsHeadlineData = await fetchNewsHeadline(
+      `https://newsapi.org/v2/top-headlines?country=${countryCode}&apiKey=${newsHeadlineApiKey}`
+    );
     let newsHeadlines: any = [];
     newsHeadlineData.articles.map((article) => {
       newsHeadlines.push({ title: article.title, url: article.url });
@@ -32,32 +36,32 @@ class NewsFormatter {
   //uncomment API method - remove ukNewsHeadlinesApiOutput
   //parameter outputNews and in controller
 
-  outputNewsUS = () => {
-    const newsHeadlineData = usNewsHeadlinesApiOutput;
-    let newsHeadlines: any = [];
-    newsHeadlineData.articles.map((article) => {
-      newsHeadlines.push({ title: article.title, url: article.url });
-    });
-    newsHeadlines.map((hash: any) => {
-      hash.percentage = Math.round(this.headlineCheck(hash.title));
-    });
-    newsHeadlines = newsHeadlines
-      .sort((a: any, b: any) =>
-        b.percentage < a.percentage ? 1 : a.percentage < b.percentage ? -1 : 0
-      )
-      .reverse();
-    const topTen = newsHeadlines.slice(0, 10);
+  // outputNewsUS = () => {
+  //   const newsHeadlineData = usNewsHeadlinesApiOutput;
+  //   let newsHeadlines: any = [];
+  //   newsHeadlineData.articles.map((article) => {
+  //     newsHeadlines.push({ title: article.title, url: article.url });
+  //   });
+  //   newsHeadlines.map((hash: any) => {
+  //     hash.percentage = Math.round(this.headlineCheck(hash.title));
+  //   });
+  //   newsHeadlines = newsHeadlines
+  //     .sort((a: any, b: any) =>
+  //       b.percentage < a.percentage ? 1 : a.percentage < b.percentage ? -1 : 0
+  //     )
+  //     .reverse();
+  //   const topTen = newsHeadlines.slice(0, 10);
 
-    return topTen;
-  };
+  //   return topTen;
+  // };
 
-  outputNewsByTopic = async () => {
-    // const newsHeadlineApiKey = process.env.NEWS_HEADLINES_API_KEY;
+  outputNewsByTopic = async (topic: string) => {
+    const newsHeadlineApiKey = process.env.NEWS_HEADLINES_API_KEY;
 
-    // const newsHeadlineData = await fetchNewsHeadline(
-    //   `https://newsapi.org/v2/everything?q=${topic}&language=en&apiKey=${newsHeadlineApiKey}`
-    // );
-    const newsHeadlineData = bitcoinApiOutput;
+    const newsHeadlineData = await fetchNewsHeadline(
+      `https://newsapi.org/v2/everything?q=${topic}&language=en&apiKey=${newsHeadlineApiKey}`
+    );
+    // const newsHeadlineData = bitcoinApiOutput;
     let newsHeadlines: any = [];
     newsHeadlineData.articles.map((article: any) => {
       newsHeadlines.push({ title: article.title, url: article.url });
