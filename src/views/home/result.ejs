@@ -29,7 +29,7 @@
         <ul class="nav nav-pills">
           <li class="nav-item">
             <a class="nav-link px-3 fw-bold" href="#scrollspyHeadingLocal"
-              >Bullshit check</a
+              >Clickbait check</a
             >
           </li>
           <li class="nav-item">
@@ -90,10 +90,10 @@
 
         <div name="resultDiv" class="card mb-4" id="scrollspyHeadingLocal">
           <div class="card-header text-white bg-primary bg-gradient fw-bold">
-            Our local Bullshit check
+            Our local Clickbait check
           </div>
           <div class="card-body bg-secondary bg-opacity-25">
-            <p class="card-title fw-bold">BullShit Stats</p>
+            <p class="card-title fw-bold">Clickbait Stats</p>
             <p class="card-text"><%= result %></p>
           </div>
         </div>
@@ -145,8 +145,22 @@
           </div>
           <div class="card-body bg-secondary bg-opacity-25">
             <p class="card-title fw-bold">Left-wing <--> Right-wing</p>
+            <p class="card-text">
+              If you are concerned your news source may contain political bias -
+              please refer
+              <a
+                href="https://www.allsides.com/media-bias/media-bias-chart"
+                target="_blank"
+                >here</a
+              >
+              for affirmation
+            </p>
             <% if(politicalBias > -5 && politicalBias < 5){%>
-            <p class="card-text">This statement is fairly neutral</p>
+            <p class="card-text">
+              Nice. The way the statement is written appears fairly politically
+              neutral: The way it is wrtitten doesn't conform to general
+              publication approach of left or right-leaning media.
+            </p>
             <%}%> <% if(politicalBias < 0){ %>
             <p class="card-text">This statement leans to the left</p>
             <p class="card-text"><%= (politicalBias) * -1%>%</p>
@@ -184,11 +198,15 @@
             Emotional Analysis
           </div>
           <div class="card-body pb-0 bg-secondary bg-opacity-25">
-            <p class="card-title fw-bold">Emotional Analysis</p>
-
             <% const max = Math.max(...Object.values(emotionObject).slice(0,
             -1)) %> <% const maxIndex = Object.keys(emotionObject).find(key =>
-            emotionObject[key] === max) %> <% if (maxIndex === "noemo"){ %>
+            emotionObject[key] === max) %>
+            <p class="card-title fw-bold">
+              <%= maxIndex.charAt(0).toUpperCase() + maxIndex.slice(1)%>
+              detected!
+            </p>
+
+            <% if (maxIndex === "noemo"){ %>
             <p class="card-text mb-0">
               We ran an emotional analysis check on this piece, and no strong
               emotion stood out in particular
@@ -291,6 +309,8 @@
               Relevant articles from Google Fact Check
             </p>
             <p class="card-text"><%= googleContent %></p>
+
+            <% if(googleResults === "No results found"){ %> <%} else {%>
             <button
               class="btn bg-secondary mb-3 bg-opacity-100 text-white"
               type="button"
@@ -301,13 +321,6 @@
             >
               Details
             </button>
-            <% if(googleResults === "No results found"){ %>
-            <div class="collapse" id="collapseExample">
-              <div class="card card-body">
-                <p>No results found</p>
-              </div>
-            </div>
-            <%} else {%>
             <div class="collapse" id="collapseExample">
               <div class="card card-body">
                 <% googleResults.forEach((ApiResult) => { %>
