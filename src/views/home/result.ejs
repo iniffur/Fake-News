@@ -67,15 +67,24 @@
         style="height: 510px; overflow-y: scroll"
       >
         <div class="card mb-4">
+          <div class="card-header text-white bg-primary bg-gradient fw-bold">
+            What you searched for
+          </div>
           <div class="card-body bg-warning bg-opacity-25">
-            <h5 class="card-title fw-bold">"<%=headline%>"</h5>
+            <div class="row">
+              <div class="col-9">
+                <h5 class="card-title fw-bold">
+                  <!-- TODO: adjust to desired length -->
+                  "<%=headline.length > 150 ? headline.substring(0,147) + "..."
+                  : headline %>"
+                </h5>
 
-            <p class="card-text">See below for results.</p>
-            <img
-              src="<%=image%>"
-              class="rounded float-right d-flex justify-content-end"
-              style="height: 100px; width: 100px"
-            />
+                <p class="card-text">See below for results.</p>
+              </div>
+              <div class="col-3 d-flex justify-content-end">
+                <img src="<%=image%>" class="rounded w-75" />
+              </div>
+            </div>
           </div>
         </div>
 
@@ -278,7 +287,7 @@
           </div>
         </div>
 
-        <div name="resultDiv" class="card mb-4" id="scrollspyHeadingGoogle">
+        <div name="resultDiv" class="card" id="scrollspyHeadingGoogle">
           <div class="card-header text-white bg-secondary bg-gradient fw-bold">
             Google Fact Check
           </div>
