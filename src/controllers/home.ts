@@ -59,7 +59,8 @@ const HomeController = {
     inputText = inputText
       .replace(/\r/g, "")
       .replace(/\n/g, " ")
-      .replace(/"/, "");
+      .replace(/=/g, "")
+      .replace(/"/g, "");
     const outputArray = new Checker(inputText).check();
 
     const outputString = outputArray[1];
