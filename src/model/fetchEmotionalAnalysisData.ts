@@ -20,7 +20,7 @@ async function fetchEmotionalAnalysisData(
     method: "POST",
     headers: {
       "content-type": "application/json",
-      "X-RapidAPI-Key": "fead1ea25bmshe9f79640743293bp1c74f4jsn5fed5c45c330",
+      "X-RapidAPI-Key": "c304c99ad8msh0b0802dae280657p1034c7jsn7f5af2caa2d3",
       "X-RapidAPI-Host": "emodex-emotions-analysis.p.rapidapi.com",
     },
     body: `{"sentence":"${input}"}`,
