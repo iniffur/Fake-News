@@ -56,7 +56,10 @@ const HomeController = {
   },
   Check: async (req: Request, res: Response) => {
     let inputText = req.body.headline;
-    inputText = inputText.replace(/\r/g, "").replace(/\n/g, " ");
+    inputText = inputText
+      .replace(/\r/g, "")
+      .replace(/\n/g, " ")
+      .replace(/"/, "");
     const outputArray = new Checker(inputText).check();
 
     const outputString = outputArray[1];
