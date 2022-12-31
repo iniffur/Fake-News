@@ -14,7 +14,7 @@ This is a Node.js project which verfies the potential legitimacy of a source's i
 
 Used technologies include:
 
-- [Typescript](https://www.typescriptlang.org/) - ??
+- [Typescript](https://www.typescriptlang.org/)
 - [Express](https://expressjs.com/) web framework for Node.js.
 - [Nodemon](https://nodemon.io/) to reload the server automatically.
 - [EJS](https://ejs.co/) to render view templates.
