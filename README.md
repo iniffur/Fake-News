@@ -38,11 +38,11 @@ Created by
 [Abdullah Daoub](https://github.com/adaoub),
 [Dimitar Dramchev](https://github.com/ddrmv), and
 [James Ruffini](https://github.com/iniffur)
-
+<br>
 ## Live Link
 
 https://dis-reeks.herokuapp.com/
-
+<br>
 ## Demo
 ![Screenshot_20230123_141923](https://user-images.githubusercontent.com/34510364/214071342-3354b528-abfe-4a88-a55f-1acf1fa5094b.png)
 Text sentiment analysis was carried out using the following [API](https://rapidapi.com/gaurmanojkumar530/api/text-analysis12)
@@ -55,8 +55,7 @@ Fact checks on short claims were analysed using Google's fact checker API
 <br><br>
 ![Screenshot_20230123_141626](https://user-images.githubusercontent.com/34510364/214071321-7a78b7b0-36b6-4634-828e-0b54373dba42.png)
 We used the following [NewsAPI](https://newsapi.org/) to generated daily news headline - analysing them for a predicted level of clickbait using our locally made checker.
-
-<br><br>
+<br>
 
 ## Installation and setup
 
