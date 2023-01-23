@@ -8,8 +8,6 @@ We offer a multi-faceted approach to determining the trustworthiness of a headli
 
 Simply take your text, paste it in, submit and find out how much This Reeks!
 
-
-
 This is a Node.js project which verfies the potential legitimacy of a source's information based on it's content and 'journalistic choices'.
 
 ## Tech Stack
@@ -47,12 +45,18 @@ https://dis-reeks.herokuapp.com/
 
 ## Demo
 ![Screenshot_20230123_141923](https://user-images.githubusercontent.com/34510364/214071342-3354b528-abfe-4a88-a55f-1acf1fa5094b.png)
+Text sentiment analysis was carried out using the following [API](https://rapidapi.com/gaurmanojkumar530/api/text-analysis12)
+<br><br>
 ![Screenshot_20230123_141952](https://user-images.githubusercontent.com/34510364/214071351-6587de09-db8c-4186-bd5d-15f724958437.png)
+Emotional analysis was carried out using the following [API](https://rapidapi.com/KarstenT/api/emodex-emotions-analysis/)
+<br><br>
 ![Screenshot_20230123_142223](https://user-images.githubusercontent.com/34510364/214071357-22b10a5d-a638-43d4-809d-fa0be656ed28.png)
-![Screenshot_20230123_141530](https://user-images.githubusercontent.com/34510364/214071188-ac74d03f-fe32-42ac-8f4a-416aa938b3ed.png)
-![Screenshot_20230123_141546](https://user-images.githubusercontent.com/34510364/214071292-558011f3-04eb-4e14-b80f-6838c173b64f.png)
+Fact checks on short claims were analysed using Google's fact checker API
+<br><br>
 ![Screenshot_20230123_141626](https://user-images.githubusercontent.com/34510364/214071321-7a78b7b0-36b6-4634-828e-0b54373dba42.png)
+We used the following [NewsAPI](https://newsapi.org/) to generated daily news headline - analysing them for a predicted level of clickbait using our localy made checker.
 
+<br><br>
 
 ## Installation and setup
 
