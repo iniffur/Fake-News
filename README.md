@@ -54,7 +54,7 @@ Emotional analysis was carried out using the following [API](https://rapidapi.co
 Fact checks on short claims were analysed using Google's fact checker API
 <br><br>
 ![Screenshot_20230123_141626](https://user-images.githubusercontent.com/34510364/214071321-7a78b7b0-36b6-4634-828e-0b54373dba42.png)
-We used the following [NewsAPI](https://newsapi.org/) to generated daily news headline - analysing them for a predicted level of clickbait using our locally made checker.
+We used the following [NewsAPI](https://newsapi.org/) to generated daily news headlines - analysing them for a predicted level of clickbait using our locally made checker.
 <br>
 
 ## Installation and setup
