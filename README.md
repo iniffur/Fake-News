@@ -41,18 +41,16 @@ Created by
 <br>
 
 ## Demo
-![Screenshot_20230123_141923](https://user-images.githubusercontent.com/34510364/214071342-3354b528-abfe-4a88-a55f-1acf1fa5094b.png)
-Text sentiment analysis was carried out using the following [API](https://rapidapi.com/gaurmanojkumar530/api/text-analysis12)
-<br><br>
-![Screenshot_20230123_141952](https://user-images.githubusercontent.com/34510364/214071351-6587de09-db8c-4186-bd5d-15f724958437.png)
-Emotional analysis was carried out using the following [API](https://rapidapi.com/KarstenT/api/emodex-emotions-analysis/)
-<br><br>
-![Screenshot_20230123_142223](https://user-images.githubusercontent.com/34510364/214071357-22b10a5d-a638-43d4-809d-fa0be656ed28.png)
-Fact checks on short claims were analysed using Google's fact checker API
-<br><br>
-![Screenshot_20230123_141626](https://user-images.githubusercontent.com/34510364/214071321-7a78b7b0-36b6-4634-828e-0b54373dba42.png)
-We used the following [NewsAPI](https://newsapi.org/) to generated daily news headlines - analysing them for a predicted level of clickbait using our locally made checker.
-<br>
+
+https://user-images.githubusercontent.com/34510364/214370552-42e2baa4-a2d5-4dbc-961d-c803dccf26cd.mp4
+
+## APIs used
+
+- [Text Sentiment Analysis](https://rapidapi.com/gaurmanojkumar530/api/text-analysis12)
+- [Political Bias](https://www.thebipartisanpress.com/political-bias-api-and-integrations/)
+- [Emotional Analysis](https://rapidapi.com/KarstenT/api/emodex-emotions-analysis/)
+- [Google Fact Checker](https://developers.google.com/fact-check/tools/api)
+- [News Headline API](https://newsapi.org/)
 
 ## Installation and setup
 
