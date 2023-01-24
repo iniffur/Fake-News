@@ -39,10 +39,7 @@ Created by
 [Dimitar Dramchev](https://github.com/ddrmv), and
 [James Ruffini](https://github.com/iniffur)
 <br>
-## Live Link
 
-https://dis-reeks.herokuapp.com/
-<br>
 ## Demo
 ![Screenshot_20230123_141923](https://user-images.githubusercontent.com/34510364/214071342-3354b528-abfe-4a88-a55f-1acf1fa5094b.png)
 Text sentiment analysis was carried out using the following [API](https://rapidapi.com/gaurmanojkumar530/api/text-analysis12)
