@@ -60,7 +60,4 @@ function onListening() {
   console.log("Now listening on " + bind);
 }
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
-
-
 export default app;
